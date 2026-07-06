@@ -214,6 +214,7 @@
     if (!animate || reduceMotion.matches) {
       hideEl.hidden = true;
       showEl.hidden = false;
+      card.classList.toggle("calc-active", target === "calc");
       if (target === "calc") update();
       return;
     }
@@ -221,9 +222,12 @@
     /* F irst: measure the card as it is */
     var first = card.getBoundingClientRect();
 
-    /* swap the content */
+    /* swap the content — the calc-active
+       class gives the card its
+       calculator-specific width */
     hideEl.hidden = true;
     showEl.hidden = false;
+    card.classList.toggle("calc-active", target === "calc");
     if (target === "calc") update(); /* draw chart at new width */
 
     /* L ast: measure the card as it will be */
