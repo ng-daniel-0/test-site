@@ -139,7 +139,7 @@ body {
       airier, more editorial feel.
 --------------------------------- */
 .card-image {
-  flex: 1 1 35%;
+  flex: 1 1 50%;
   min-height: 480px;
   position: relative;
 }
