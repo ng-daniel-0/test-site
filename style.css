@@ -64,6 +64,17 @@ body {
   animation: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Card width when the CALCULATOR view
+   is showing. The router adds/removes
+   the calc-active class, and the morph
+   animates the width change smoothly.
+   Adjust this number freely — the home
+   view keeps using the max-width in
+   .content-box above. */
+.content-box.calc-active {
+  max-width: 950px;
+}
+
 /* While morphing between views, the
    router pins the card to pixel sizes
    and this transition animates between
@@ -128,7 +139,7 @@ body {
       airier, more editorial feel.
 --------------------------------- */
 .card-image {
-  flex: 1 1 50%;
+  flex: 1 1 35%;
   min-height: 480px;
   position: relative;
 }
@@ -357,10 +368,10 @@ body {
 }
 
 /* scale the lockup down in the header */
-.calc-brand .logo-mark    { width: 24px; }
-.calc-brand .logo-staple  { font-size: 17px; letter-spacing: 2px; }
-.calc-brand .logo-divider { height: 17px; }
-.calc-brand .logo-finance { font-size: 10px; letter-spacing: 3px; }
+.calc-brand .logo-mark    { width: 27px; }
+.calc-brand .logo-staple  { font-size: 24px; letter-spacing: 2px; }
+.calc-brand .logo-divider { height: 20px; }
+.calc-brand .logo-finance { font-size: 14px; letter-spacing: 3px; }
 
 .back-link {
   font-size: 12px;
