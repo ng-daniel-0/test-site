@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staple Finance — Finance brokerage</title>
+<meta name="description" content="Staple Finance is an independent finance brokerage. Home, business and asset lending — compared, negotiated and handled for you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- One card, two views. The home view
+       and the calculator view live inside
+       the same white card; switching views
+       animates the card's size smoothly
+       (see the router script at the bottom
+       of this file). -->
+  <main class="content-box" id="card">
+
+    <!-- ================================
+         VIEW 1 — HOME
+    ================================= -->
+    <div class="view view-home" id="viewHome">
+
+      <div class="card-content">
+
+        <!-- Logo lockup (Option 03 — inline) -->
+        <div class="logo-block">
+          <svg class="logo-mark" viewBox="0 0 234.395 168.087" role="img" aria-label="Staple Finance logo">
+            <g transform="matrix(1.4234267,0,0,1.4234267,-28.850034,-114.42815)">
+              <path fill="#323439" d="m 102.59697,80.389591 c -5.995126,-0.03627 -12.215134,3.16446 -16.22981,8.991109 l -64.279208,93.29066 c -0.02399,0.0345 -0.04761,0.0691 -0.07116,0.10383 l -0.01343,0.0189 c -1.130088,1.6703 -1.735381,3.6522 -1.735343,5.68198 6e-5,5.5226 4.387096,9.99937 9.798516,9.99928 0.04978,4e-5 0.09943,-3e-5 0.14921,-7.3e-4 v 7.3e-4 h 11.816306 l 60.570729,-84.5544 60.57073,84.5544 h 11.86423 v -3.6e-4 c 0.0338,3.5e-4 0.0675,3.7e-4 0.10129,3.6e-4 5.41142,1e-4 9.79845,-4.47668 9.79851,-9.99928 -0.003,-2.03107 -0.61302,-4.01308 -1.74732,-5.68198 h 0.0116 l -0.10964,-0.15864 -0.001,-0.002 -7.3e-4,-0.001 -64.2527,-93.251447 c -4.01714,-5.830227 -10.2422,-9.031735 -16.24071,-8.991472 z"/>
+              <path fill="#cbac48" transform="matrix(0.90777904,0,0,0.7310362,14.575642,61.679093)" d="m 96.969789,97.631096 51.670271,89.495534 -103.340543,0 z"/>
+            </g>
+          </svg>
+          <span class="logo-staple">STAPLE</span>
+          <span class="logo-divider" aria-hidden="true"></span>
+          <span class="logo-finance">Finance</span>
+        </div>
+
+        <h1>The right finance, without the&nbsp;runaround.</h1>
+
+        <p class="lede">
+          Staple Finance is an independent brokerage for home, business
+          and asset lending. We compare the market, negotiate on your
+          behalf and handle the paperwork — so you can get on with it.
+        </p>
+
+        <div class="btn-row">
+          <a href="mailto:hello@staplefinance.com.au" class="btn">Get in touch</a>
+          <a href="#calculator" class="btn btn-ghost">Repayment calculator</a>
+        </div>
+
+        <p class="alt-contact">
+          or email <a href="mailto:hello@staplefinance.com.au">hello@staplefinance.com.au</a>
+        </p>
+
+        <footer class="fineprint">
+          © 2026 Staple Finance&nbsp;&nbsp;·&nbsp;&nbsp;ABN 00 000 000 000
+        </footer>
+
+      </div>
+
+      <div class="card-image">
+        <img src="assets/Image_211234.jpeg" alt="">
+      </div>
+
+    </div>
+
+    <!-- ================================
+         VIEW 2 — CALCULATOR
+    ================================= -->
+    <div class="view view-calc" id="viewCalc" hidden>
+
+      <header class="calc-header">
+        <a href="#home" class="calc-brand" aria-label="Staple Finance — home">
+          <svg class="logo-mark" viewBox="0 0 234.395 168.087" role="img" aria-label="">
+            <g transform="matrix(1.4234267,0,0,1.4234267,-28.850034,-114.42815)">
+              <path fill="#323439" d="m 102.59697,80.389591 c -5.995126,-0.03627 -12.215134,3.16446 -16.22981,8.991109 l -64.279208,93.29066 c -0.02399,0.0345 -0.04761,0.0691 -0.07116,0.10383 l -0.01343,0.0189 c -1.130088,1.6703 -1.735381,3.6522 -1.735343,5.68198 6e-5,5.5226 4.387096,9.99937 9.798516,9.99928 0.04978,4e-5 0.09943,-3e-5 0.14921,-7.3e-4 v 7.3e-4 h 11.816306 l 60.570729,-84.5544 60.57073,84.5544 h 11.86423 v -3.6e-4 c 0.0338,3.5e-4 0.0675,3.7e-4 0.10129,3.6e-4 5.41142,1e-4 9.79845,-4.47668 9.79851,-9.99928 -0.003,-2.03107 -0.61302,-4.01308 -1.74732,-5.68198 h 0.0116 l -0.10964,-0.15864 -0.001,-0.002 -7.3e-4,-0.001 -64.2527,-93.251447 c -4.01714,-5.830227 -10.2422,-9.031735 -16.24071,-8.991472 z"/>
+              <path fill="#cbac48" transform="matrix(0.90777904,0,0,0.7310362,14.575642,61.679093)" d="m 96.969789,97.631096 51.670271,89.495534 -103.340543,0 z"/>
+            </g>
+          </svg>
+          <span class="logo-staple">STAPLE</span>
+          <span class="logo-divider" aria-hidden="true"></span>
+          <span class="logo-finance">Finance</span>
+        </a>
+        <a href="#home" class="back-link">&larr; Back</a>
+      </header>
+
+      <h1 class="calc-title">Repayment calculator</h1>
+
+      <div class="calc-grid">
+
+        <!-- =========== Controls =========== -->
+        <div class="calc-controls">
+
+          <div class="field">
+            <label class="field-label" for="loanAmount">Loan amount</label>
+            <div class="money-input">
+              <span class="money-prefix">$</span>
+              <input type="text" id="loanAmount" inputmode="numeric" value="500,000" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="freqLabel">Payment frequency</span>
+            <div class="segmented" role="group" aria-labelledby="freqLabel">
+              <button type="button" data-freq="weekly">Weekly</button>
+              <button type="button" data-freq="fortnightly">Fortnightly</button>
+              <button type="button" data-freq="monthly" class="active">Monthly</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="rate">
+              Interest rate
+              <span class="field-value">
+                <input type="number" class="inline-num" id="rateInput" min="1" max="10" step="0.05" value="5.5" inputmode="decimal">
+                <span class="unit">% p.a.</span>
+              </span>
+            </label>
+            <input type="range" id="rate" min="1" max="10" step="0.05" value="5.5" aria-label="Interest rate slider">
+            <div class="range-ends"><span>1%</span><span>10%</span></div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="term">
+              Loan term
+              <span class="field-value">
+                <input type="number" class="inline-num" id="termInput" min="1" max="40" step="1" value="30" inputmode="numeric">
+                <span class="unit">years</span>
+              </span>
+            </label>
+            <input type="range" id="term" min="1" max="40" step="1" value="30" aria-label="Loan term slider">
+            <div class="range-ends"><span>1 yr</span><span>40 yrs</span></div>
+          </div>
+
+        </div>
+
+        <!-- =========== Results =========== -->
+        <div class="calc-results">
+
+          <div class="repayment-hero">
+            <div class="repayment-label" id="repaymentLabel">Monthly repayments</div>
+            <div class="repayment-amount" id="repaymentAmount">$2,839</div>
+            <div class="repayment-monthly-wrap" id="monthlyWrap">
+              <div class="repayment-monthly" id="repaymentMonthly"></div>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat">
+              <span class="stat-label">Total interest</span>
+              <span class="stat-value" id="totalInterest">–</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Total paid</span>
+              <span class="stat-value" id="totalPaid">–</span>
+            </div>
+          </div>
+
+          <div class="chart-wrap" id="chartWrap">
+            <div class="chart-legend">
+              <span class="key"><span class="swatch swatch-ink"></span>Total remaining</span>
+              <span class="key"><span class="swatch swatch-gold"></span>Principal</span>
+              <span class="key"><span class="swatch swatch-area"></span>Interest remaining</span>
+            </div>
+            <canvas id="chart" height="260" aria-label="Chart showing the principal and total amount remaining reducing over the life of the loan" role="img"></canvas>
+            <div class="chart-tip" id="chartTip" role="status" aria-live="polite"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <footer class="fineprint calc-fineprint">
+        Estimates only, based on the inputs above, and assume the rate stays the same
+        for the full term. Excludes fees and charges. This is general information,
+        not financial or credit advice.
+      </footer>
+
+    </div>
+
+  </main>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ====================================
+     PART 1 — VIEW ROUTER + CARD MORPH
+     Swapping views uses the FLIP
+     technique: measure the card, swap
+     the content, measure again, then
+     animate from the old size to the
+     new size. Works in every browser.
+  ==================================== */
+  var card     = document.getElementById("card");
+  var viewHome = document.getElementById("viewHome");
+  var viewCalc = document.getElementById("viewCalc");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var morphTimer = null;
+
+  function currentTarget() {
+    return location.hash === "#calculator" ? "calc" : "home";
+  }
+
+  function applyView(target, animate) {
+    var showEl = target === "calc" ? viewCalc : viewHome;
+    var hideEl = target === "calc" ? viewHome : viewCalc;
+    if (!showEl.hidden) return; /* already showing */
+
+    if (!animate || reduceMotion.matches) {
+      hideEl.hidden = true;
+      showEl.hidden = false;
+      card.classList.toggle("calc-active", target === "calc");
+      if (target === "calc") update();
+      return;
+    }
+
+    /* F irst: measure the card as it is */
+    var first = card.getBoundingClientRect();
+
+    /* swap the content — the calc-active
+       class gives the card its
+       calculator-specific width */
+    hideEl.hidden = true;
+    showEl.hidden = false;
+    card.classList.toggle("calc-active", target === "calc");
+    if (target === "calc") update(); /* draw chart at new width */
+
+    /* L ast: measure the card as it will be */
+    var second = card.getBoundingClientRect();
+
+    /* I nvert: pin the card at its old size */
+    card.style.width  = first.width + "px";
+    card.style.height = first.height + "px";
+    void card.offsetWidth; /* force the browser to apply it */
+
+    /* P lay: transition to the new size */
+    card.classList.add("morphing");
+    showEl.classList.add("view-enter");
+    card.style.width  = second.width + "px";
+    card.style.height = second.height + "px";
+
+    clearTimeout(morphTimer);
+    var done = function () {
+      card.classList.remove("morphing");
+      card.style.width = "";
+      card.style.height = "";
+      showEl.classList.remove("view-enter");
+    };
+    card.addEventListener("transitionend", function handler(e) {
+      if (e.target !== card) return;
+      card.removeEventListener("transitionend", handler);
+      clearTimeout(morphTimer);
+      done();
+    });
+    morphTimer = setTimeout(done, 600); /* safety net */
+  }
+
+  window.addEventListener("hashchange", function () {
+    applyView(currentTarget(), true);
+  });
+
+  /* ====================================
+     PART 2 — CALCULATOR
+  ==================================== */
+  var state = { amount: 500000, freq: "monthly", rate: 5.5, term: 30 };
+  var PERIODS = { weekly: 52, fortnightly: 26, monthly: 12 };
+  var FREQ_LABEL = { weekly: "Weekly repayments", fortnightly: "Fortnightly repayments", monthly: "Monthly repayments" };
+
+  var amountEl  = document.getElementById("loanAmount");
+  var rateEl    = document.getElementById("rate");
+  var termEl    = document.getElementById("term");
+  var rateInput = document.getElementById("rateInput");
+  var termInput = document.getElementById("termInput");
+  var segBtns   = document.querySelectorAll(".segmented button");
+  var repayLbl  = document.getElementById("repaymentLabel");
+  var repayAmt  = document.getElementById("repaymentAmount");
+  var repayMo   = document.getElementById("repaymentMonthly");
+  var moWrap    = document.getElementById("monthlyWrap");
+  var intEl     = document.getElementById("totalInterest");
+  var paidEl    = document.getElementById("totalPaid");
+  var canvas    = document.getElementById("chart");
+  var chartWrap = document.getElementById("chartWrap");
+  var chartTip  = document.getElementById("chartTip");
+  var ctx       = canvas.getContext("2d");
+
+  /* Everything the chart + tooltip needs,
+     refreshed on every recalculation */
+  var geo = null;
+  var hoverYear = null;
+
+  function fmt(v) {
+    return "$" + Math.round(v).toLocaleString("en-AU");
+  }
+  function fmtShort(v) {
+    if (v >= 1e6) return "$" + (v / 1e6).toFixed(v >= 1e7 ? 0 : 1) + "m";
+    if (v >= 1e3) return "$" + Math.round(v / 1e3) + "k";
+    return "$" + Math.round(v);
+  }
+  function clamp(v, lo, hi) {
+    return Math.min(hi, Math.max(lo, v));
+  }
+
+  function repaymentPerPeriod(L, annualPct, years, periodsPerYear) {
+    var r = annualPct / 100 / periodsPerYear;
+    var n = years * periodsPerYear;
+    if (r === 0) return L / n;
+    return (L * r) / (1 - Math.pow(1 + r, -n));
+  }
+
+  function balanceAfter(L, r, pay, k) {
+    if (r === 0) return Math.max(0, L - pay * k);
+    var g = Math.pow(1 + r, k);
+    return Math.max(0, L * g - (pay * (g - 1)) / r);
+  }
+
+  function update() {
+    var periods = PERIODS[state.freq];
+    var pay = repaymentPerPeriod(state.amount, state.rate, state.term, periods);
+    var totalPaid = pay * periods * state.term;
+
+    repayLbl.textContent = FREQ_LABEL[state.freq];
+    repayAmt.textContent = fmt(pay);
+
+    if (state.freq !== "monthly") {
+      var monthlyPay = repaymentPerPeriod(state.amount, state.rate, state.term, 12);
+      repayMo.textContent = "\u2248 " + fmt(monthlyPay) + " per month";
+      moWrap.classList.add("open");
+    } else {
+      moWrap.classList.remove("open");
+    }
+
+    intEl.textContent  = fmt(totalPaid - state.amount);
+    paidEl.textContent = fmt(totalPaid);
+
+    /* Build the chart data */
+    var r = state.rate / 100 / periods;
+    var n = state.term * periods;
+    var balance = [], totalRemaining = [];
+    for (var y = 0; y <= state.term; y++) {
+      var k = y * periods;
+      balance.push(balanceAfter(state.amount, r, pay, k));
+      totalRemaining.push(pay * (n - k));
+    }
+
+    geo = {
+      pay: pay,
+      periods: periods,
+      years: state.term,
+      balance: balance,
+      totalRemaining: totalRemaining,
+      maxY: totalPaid
+    };
+    hoverYear = null;
+    hideTip();
+    drawChart();
+  }
+
+  /* ------------------------------------
+     Chart — two declining lines.
+     · ink  = total remaining to pay
+     · gold = principal still owed
+     The grey band between them is the
+     interest still to be paid; the gold
+     area under the principal line is
+     the principal still owed.
+  ------------------------------------ */
+  function drawChart() {
+    if (!geo) return;
+
+    var dpr = window.devicePixelRatio || 1;
+    var cssW = canvas.clientWidth;
+    var cssH = 260;
+    if (cssW === 0) return; /* view is hidden */
+    canvas.width = cssW * dpr;
+    canvas.height = cssH * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    var padL = 52, padR = 10, padT = 12, padB = 30;
+    var w = cssW - padL - padR;
+    var h = cssH - padT - padB;
+
+    /* remember for the tooltip */
+    geo.padL = padL; geo.w = w;
+
+    var years = geo.years;
+    var maxY = geo.maxY;
+
+    function X(yy) { return padL + (yy / years) * w; }
+    function Y(v)  { return padT + h - (v / maxY) * h; }
+
+    ctx.clearRect(0, 0, cssW, cssH);
+    ctx.font = "10px Inter, sans-serif";
+    ctx.fillStyle = "#b4b1a8";
+
+    /* horizontal gridlines + labels */
+    ctx.strokeStyle = "#efece3";
+    ctx.lineWidth = 1;
+    var steps = 4;
+    for (var i = 0; i <= steps; i++) {
+      var v = (maxY / steps) * i;
+      var gy = Y(v);
+      ctx.beginPath();
+      ctx.moveTo(padL, gy);
+      ctx.lineTo(padL + w, gy);
+      ctx.stroke();
+      ctx.textAlign = "right";
+      ctx.fillText(fmtShort(v), padL - 8, gy + 3);
+    }
+
+    /* x-axis labels */
+    ctx.textAlign = "center";
+    var xStep = years > 30 ? 10 : years > 12 ? 5 : years > 6 ? 2 : 1;
+    for (var yr = 0; yr <= years; yr += xStep) {
+      ctx.fillText(yr, X(yr), padT + h + 18);
+    }
+    ctx.fillText("Years", padL + w / 2, padT + h + 30);
+
+    /* grey band — interest remaining:
+       forward along the total line, back
+       along the principal line */
+    ctx.beginPath();
+    ctx.moveTo(X(0), Y(geo.totalRemaining[0]));
+    for (var a = 1; a <= years; a++) ctx.lineTo(X(a), Y(geo.totalRemaining[a]));
+    for (var b = years; b >= 0; b--) ctx.lineTo(X(b), Y(geo.balance[b]));
+    ctx.closePath();
+    ctx.fillStyle = "rgba(50, 52, 57, 0.08)";
+    ctx.fill();
+
+    /* gold area — principal still owed */
+    ctx.beginPath();
+    ctx.moveTo(X(0), Y(geo.balance[0]));
+    for (var c = 1; c <= years; c++) ctx.lineTo(X(c), Y(geo.balance[c]));
+    ctx.lineTo(X(years), Y(0));
+    ctx.lineTo(X(0), Y(0));
+    ctx.closePath();
+    ctx.fillStyle = "rgba(203, 172, 72, 0.14)";
+    ctx.fill();
+
+    function line(series, color) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.lineJoin = "round";
+      ctx.beginPath();
+      for (var p = 0; p <= years; p++) {
+        var px = X(p), py = Y(series[p]);
+        if (p === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
+
+    line(geo.totalRemaining, "#323439");
+    line(geo.balance, "#cbac48");
+
+    /* hover marker: vertical guide + dots */
+    if (hoverYear !== null) {
+      var hx = X(hoverYear);
+      ctx.strokeStyle = "#d8d5cc";
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 3]);
+      ctx.beginPath();
+      ctx.moveTo(hx, padT);
+      ctx.lineTo(hx, padT + h);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      function dot(v, color) {
+        ctx.beginPath();
+        ctx.arc(hx, Y(v), 4, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+      dot(geo.totalRemaining[hoverYear], "#323439");
+      dot(geo.balance[hoverYear], "#cbac48");
+    }
+  }
+
+  /* ------------------------------------
+     Tooltip — snaps to the nearest year,
+     follows the cursor.
+  ------------------------------------ */
+  function showTip(e) {
+    if (!geo || !geo.w) return;
+
+    var rect = canvas.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var frac = clamp((x - geo.padL) / geo.w, 0, 1);
+    var yr = Math.round(frac * geo.years);
+
+    if (yr !== hoverYear) {
+      hoverYear = yr;
+      drawChart();
+    }
+
+    var balance = geo.balance[yr];
+    var principalPaid = state.amount - balance;
+    var paidToDate = geo.pay * geo.periods * yr;
+    var interestPaid = Math.max(0, paidToDate - principalPaid);
+
+    chartTip.innerHTML =
+      '<div class="tip-year">Year ' + yr + "</div>" +
+      '<div class="tip-row"><span class="tip-dot" style="background:#cbac48"></span>Balance<b>' + fmt(balance) + "</b></div>" +
+      '<div class="tip-row"><span class="tip-dot" style="background:#323439"></span>Principal paid<b>' + fmt(principalPaid) + "</b></div>" +
+      '<div class="tip-row"><span class="tip-dot tip-dot-hollow"></span>Interest paid<b>' + fmt(interestPaid) + "</b></div>";
+    chartTip.style.display = "block";
+
+    /* position beside the cursor, flipping
+       to the left near the right edge */
+    var wrapRect = chartWrap.getBoundingClientRect();
+    var tipW = chartTip.offsetWidth;
+    var left = e.clientX - wrapRect.left + 16;
+    if (left + tipW > wrapRect.width - 4) {
+      left = e.clientX - wrapRect.left - tipW - 16;
+    }
+    var top = e.clientY - wrapRect.top + 16;
+    var tipH = chartTip.offsetHeight;
+    if (top + tipH > wrapRect.height - 4) {
+      top = e.clientY - wrapRect.top - tipH - 12;
+    }
+    chartTip.style.left = left + "px";
+    chartTip.style.top = top + "px";
+  }
+
+  function hideTip() {
+    chartTip.style.display = "none";
+    if (hoverYear !== null) {
+      hoverYear = null;
+      drawChart();
+    }
+  }
+
+  canvas.addEventListener("mousemove", showTip);
+  canvas.addEventListener("mouseleave", hideTip);
+
+  /* ------------------------------------
+     Control events
+  ------------------------------------ */
+  amountEl.addEventListener("input", function () {
+    var digits = amountEl.value.replace(/[^0-9]/g, "").slice(0, 9);
+    state.amount = digits ? parseInt(digits, 10) : 0;
+    amountEl.value = state.amount ? state.amount.toLocaleString("en-AU") : "";
+    update();
+  });
+
+  rateEl.addEventListener("input", function () {
+    state.rate = parseFloat(rateEl.value);
+    rateInput.value = state.rate;
+    update();
+  });
+
+  rateInput.addEventListener("input", function () {
+    var v = parseFloat(rateInput.value);
+    if (!isNaN(v) && v >= 1 && v <= 10) {
+      state.rate = v;
+      rateEl.value = v;
+      update();
+    }
+  });
+
+  rateInput.addEventListener("change", function () {
+    var v = parseFloat(rateInput.value);
+    if (isNaN(v)) v = state.rate;
+    v = clamp(v, 1, 10);
+    state.rate = v;
+    rateInput.value = v;
+    rateEl.value = v;
+    update();
+  });
+
+  termEl.addEventListener("input", function () {
+    state.term = parseInt(termEl.value, 10);
+    termInput.value = state.term;
+    update();
+  });
+
+  termInput.addEventListener("input", function () {
+    var v = parseInt(termInput.value, 10);
+    if (!isNaN(v) && v >= 1 && v <= 40) {
+      state.term = v;
+      termEl.value = v;
+      update();
+    }
+  });
+
+  termInput.addEventListener("change", function () {
+    var v = parseInt(termInput.value, 10);
+    if (isNaN(v)) v = state.term;
+    v = clamp(v, 1, 40);
+    state.term = v;
+    termInput.value = v;
+    termEl.value = v;
+    update();
+  });
+
+  segBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      segBtns.forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      state.freq = btn.dataset.freq;
+      update();
+    });
+  });
+
+  window.addEventListener("resize", function () {
+    if (!viewCalc.hidden) update();
+  });
+
+  /* ------------------------------------
+     Boot: show whichever view the URL
+     asks for (no animation on first load)
+  ------------------------------------ */
+  applyView(currentTarget(), false);
+  update();
+})();
+</script>
+
+</body>
+</html>
