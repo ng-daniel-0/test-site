@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staple Finance — Finance brokerage</title>
+<meta name="description" content="Staple Finance is an independent finance brokerage. Home, business and asset lending — compared, negotiated and handled for you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- FOUC guard: an empty script element
+     makes Firefox hold the first paint
+     until pending stylesheets are
+     applied, preventing a flash of
+     unstyled content on fast refreshes.
+     Chrome/Edge already block on CSS. -->
+<script>0</script>
+</head>
+<body>
+
+  <!-- One card, two views. The home view
+       and the calculator view live inside
+       the same white card; switching views
+       animates the card's size smoothly
+       (see the router script at the bottom
+       of this file). -->
+  <main class="content-box" id="card">
+
+    <!-- ================================
+         VIEW 1 — HOME
+    ================================= -->
+    <div class="view view-home" id="viewHome">
+
+      <div class="card-content">
+
+        <!-- Logo lockup (Option 03 — inline) -->
+        <div class="logo-block">
+          <svg class="logo-mark" viewBox="0 0 234.395 168.087" role="img" aria-label="Staple Finance logo">
+            <g transform="matrix(1.4234267,0,0,1.4234267,-28.850034,-114.42815)">
+              <path fill="#323439" d="m 102.59697,80.389591 c -5.995126,-0.03627 -12.215134,3.16446 -16.22981,8.991109 l -64.279208,93.29066 c -0.02399,0.0345 -0.04761,0.0691 -0.07116,0.10383 l -0.01343,0.0189 c -1.130088,1.6703 -1.735381,3.6522 -1.735343,5.68198 6e-5,5.5226 4.387096,9.99937 9.798516,9.99928 0.04978,4e-5 0.09943,-3e-5 0.14921,-7.3e-4 v 7.3e-4 h 11.816306 l 60.570729,-84.5544 60.57073,84.5544 h 11.86423 v -3.6e-4 c 0.0338,3.5e-4 0.0675,3.7e-4 0.10129,3.6e-4 5.41142,1e-4 9.79845,-4.47668 9.79851,-9.99928 -0.003,-2.03107 -0.61302,-4.01308 -1.74732,-5.68198 h 0.0116 l -0.10964,-0.15864 -0.001,-0.002 -7.3e-4,-0.001 -64.2527,-93.251447 c -4.01714,-5.830227 -10.2422,-9.031735 -16.24071,-8.991472 z"/>
+              <path fill="#cbac48" transform="matrix(0.90777904,0,0,0.7310362,14.575642,61.679093)" d="m 96.969789,97.631096 51.670271,89.495534 -103.340543,0 z"/>
+            </g>
+          </svg>
+          <span class="logo-staple">STAPLE</span>
+          <span class="logo-divider" aria-hidden="true"></span>
+          <span class="logo-finance">Finance</span>
+        </div>
+
+        <h1>Your finance staple, without the&nbsp;runaround.</h1>
+
+        <p class="lede">
+          Staple Finance is an independent brokerage for home, business
+          and asset lending. We compare the market, negotiate on your
+          behalf and handle the paperwork — so you can get on with it.
+        </p>
+
+        <div class="btn-row">
+          <a href="#contact" class="btn">Get in touch</a>
+          <a href="#tools" class="btn btn-ghost">Calculators</a>
+        </div>
+
+        <p class="alt-contact">
+          or email <a href="mailto:hello@staplefinance.com.au">hello@staplefinance.com.au</a>
+        </p>
+
+        <footer class="fineprint">
+          © 2026 Staple Finance&nbsp;&nbsp;·&nbsp;&nbsp;ABN 00 000 000 000
+        </footer>
+
+      </div>
+
+      <div class="card-image">
+        <img src="assets/Image_211234.jpeg" alt="">
+      </div>
+
+    </div>
+
+    <!-- ================================
+         VIEW 2 — CALCULATOR
+    ================================= -->
+    <div class="view view-calc" id="viewCalc" hidden>
+
+      <header class="calc-header">
+        <a href="#home" class="calc-brand" aria-label="Staple Finance — home">
+          <svg class="logo-mark" viewBox="0 0 234.395 168.087" role="img" aria-label="">
+            <g transform="matrix(1.4234267,0,0,1.4234267,-28.850034,-114.42815)">
+              <path fill="#323439" d="m 102.59697,80.389591 c -5.995126,-0.03627 -12.215134,3.16446 -16.22981,8.991109 l -64.279208,93.29066 c -0.02399,0.0345 -0.04761,0.0691 -0.07116,0.10383 l -0.01343,0.0189 c -1.130088,1.6703 -1.735381,3.6522 -1.735343,5.68198 6e-5,5.5226 4.387096,9.99937 9.798516,9.99928 0.04978,4e-5 0.09943,-3e-5 0.14921,-7.3e-4 v 7.3e-4 h 11.816306 l 60.570729,-84.5544 60.57073,84.5544 h 11.86423 v -3.6e-4 c 0.0338,3.5e-4 0.0675,3.7e-4 0.10129,3.6e-4 5.41142,1e-4 9.79845,-4.47668 9.79851,-9.99928 -0.003,-2.03107 -0.61302,-4.01308 -1.74732,-5.68198 h 0.0116 l -0.10964,-0.15864 -0.001,-0.002 -7.3e-4,-0.001 -64.2527,-93.251447 c -4.01714,-5.830227 -10.2422,-9.031735 -16.24071,-8.991472 z"/>
+              <path fill="#cbac48" transform="matrix(0.90777904,0,0,0.7310362,14.575642,61.679093)" d="m 96.969789,97.631096 51.670271,89.495534 -103.340543,0 z"/>
+            </g>
+          </svg>
+          <span class="logo-staple">STAPLE</span>
+          <span class="logo-divider" aria-hidden="true"></span>
+          <span class="logo-finance">Finance</span>
+        </a>
+        <a href="#home" class="back-link">&larr; Back</a>
+      </header>
+
+      <!-- Tool switcher — toggles between the two
+           calculators without leaving the card. -->
+      <div class="tool-tabs" role="tablist" aria-label="Finance tools">
+        <button type="button" class="tool-tab active" data-tool="repayment" role="tab" aria-selected="true" id="tabRepayment">Repayments</button>
+        <button type="button" class="tool-tab" data-tool="capacity" role="tab" aria-selected="false" id="tabCapacity">Borrowing Capacity</button>
+        <button type="button" class="tool-tab" data-tool="early" role="tab" aria-selected="false" id="tabEarly">Early Repayment</button>
+        <button type="button" class="tool-tab" data-tool="terms" role="tab" aria-selected="false" id="tabTerms">Key Terms</button>
+      </div>
+
+      <!-- ================================
+           TOOL A — REPAYMENT CALCULATOR
+      ================================= -->
+      <div class="tool-panel" id="toolRepayment" role="tabpanel" aria-labelledby="tabRepayment">
+
+        <h1 class="calc-title">Repayment calculator</h1>
+
+        <div class="calc-grid">
+
+          <!-- =========== Controls =========== -->
+          <div class="calc-controls">
+
+            <div class="field">
+              <label class="field-label" for="loanAmount">Loan amount</label>
+              <div class="money-input">
+                <span class="money-prefix">$</span>
+                <input type="text" id="loanAmount" inputmode="numeric" value="600,000" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label" id="freqLabel">Payment frequency</span>
+              <div class="segmented" role="group" aria-labelledby="freqLabel">
+                <button type="button" data-freq="weekly">Weekly</button>
+                <button type="button" data-freq="fortnightly">Fortnightly</button>
+                <button type="button" data-freq="monthly" class="active">Monthly</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="rate">
+                Interest rate
+                <span class="field-value">
+                  <input type="number" class="inline-num" id="rateInput" min="1" max="10" step="0.05" value="5.9" inputmode="decimal">
+                  <span class="unit">% p.a.</span>
+                </span>
+              </label>
+              <input type="range" id="rate" min="1" max="10" step="0.05" value="5.9" aria-label="Interest rate slider">
+              <div class="range-ends"><span>1%</span><span>10%</span></div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="term">
+                Loan term
+                <span class="field-value">
+                  <input type="number" class="inline-num" id="termInput" min="1" max="40" step="1" value="30" inputmode="numeric">
+                  <span class="unit">years</span>
+                </span>
+              </label>
+              <input type="range" id="term" min="1" max="40" step="1" value="30" aria-label="Loan term slider">
+              <div class="range-ends"><span>1 yr</span><span>40 yrs</span></div>
+            </div>
+
+          </div>
+
+          <!-- =========== Results =========== -->
+          <div class="calc-results">
+
+            <div class="repayment-hero" id="repayHero">
+              <div class="repayment-label" id="repaymentLabel">Monthly repayments</div>
+              <div class="repayment-hero-row">
+                <div class="repayment-amount" id="repaymentAmount">$2,839</div>
+                <div class="repayment-monthly-inline" id="repaymentMonthly"></div>
+              </div>
+              <div class="hero-tip" id="repayHeroTip" role="tooltip"></div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat-label">Total interest</span>
+                <span class="stat-value" id="totalInterest">–</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Total paid</span>
+                <span class="stat-value" id="totalPaid">–</span>
+              </div>
+            </div>
+
+            <div class="chart-wrap" id="chartWrap">
+              <div class="chart-legend">
+                <span class="key"><span class="swatch swatch-ink"></span>Total remaining</span>
+                <span class="key"><span class="swatch swatch-gold"></span>Principal</span>
+                <span class="key"><span class="swatch swatch-area"></span>Interest remaining</span>
+              </div>
+              <canvas id="chart" class="calc-chart" height="260" aria-label="Chart showing the principal and total amount remaining reducing over the life of the loan" role="img"></canvas>
+              <div class="chart-tip" id="chartTip" role="status" aria-live="polite"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================
+           TOOL B — BORROWING CAPACITY
+      ================================= -->
+      <div class="tool-panel" id="toolCapacity" role="tabpanel" aria-labelledby="tabCapacity" hidden>
+
+        <h1 class="calc-title">Borrowing capacity calculator</h1>
+
+        <div class="calc-grid">
+
+          <!-- =========== Controls =========== -->
+          <div class="calc-controls">
+
+            <div class="field">
+              <label class="field-label" for="affordAmount">Comfortable repayment</label>
+              <div class="money-input">
+                <span class="money-prefix">$</span>
+                <input type="text" id="affordAmount" inputmode="numeric" value="3000" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label" id="freqLabelCap">Repayment frequency</span>
+              <div class="segmented" role="group" aria-labelledby="freqLabelCap" id="segCap">
+                <button type="button" data-freq="weekly">Weekly</button>
+                <button type="button" data-freq="fortnightly">Fortnightly</button>
+                <button type="button" data-freq="monthly" class="active">Monthly</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="rateCap">
+                Interest rate
+                <span class="field-value">
+                  <input type="number" class="inline-num" id="rateInputCap" min="1" max="10" step="0.05" value="5.9" inputmode="decimal">
+                  <span class="unit">% p.a.</span>
+                </span>
+              </label>
+              <input type="range" id="rateCap" min="1" max="10" step="0.05" value="5.9" aria-label="Interest rate slider">
+              <div class="range-ends"><span>1%</span><span>10%</span></div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="termCap">
+                Loan term
+                <span class="field-value">
+                  <input type="number" class="inline-num" id="termInputCap" min="1" max="40" step="1" value="30" inputmode="numeric">
+                  <span class="unit">years</span>
+                </span>
+              </label>
+              <input type="range" id="termCap" min="1" max="40" step="1" value="30" aria-label="Loan term slider">
+              <div class="range-ends"><span>1 yr</span><span>40 yrs</span></div>
+            </div>
+
+          </div>
+
+          <!-- =========== Results =========== -->
+          <div class="calc-results">
+
+            <div class="repayment-hero" id="capHero">
+              <div class="repayment-label">Estimated borrowing capacity</div>
+              <div class="repayment-amount" id="capacityAmount">$–</div>
+              <div class="hero-tip" id="capHeroTip" role="tooltip"></div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat-label">Total interest</span>
+                <span class="stat-value" id="capTotalInterest">–</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Total repaid</span>
+                <span class="stat-value" id="capTotalPaid">–</span>
+              </div>
+            </div>
+
+            <div class="chart-wrap" id="capChartWrap">
+              <div class="chart-legend">
+                <span class="key"><span class="swatch swatch-ink"></span>Borrowing capacity</span>
+                <span class="key"><span class="swatch swatch-dot"></span>Your selected rate</span>
+              </div>
+              <canvas id="capChart" class="calc-chart" height="260" aria-label="Chart showing how estimated borrowing capacity changes as the interest rate changes" role="img"></canvas>
+              <div class="chart-tip" id="capChartTip" role="status" aria-live="polite"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================
+           TOOL C — EARLY REPAYMENT
+      ================================= -->
+      <div class="tool-panel" id="toolEarly" role="tabpanel" aria-labelledby="tabEarly" hidden>
+
+        <h1 class="calc-title">Early repayment calculator</h1>
+
+        <div class="calc-grid">
+
+          <!-- =========== Controls =========== -->
+          <div class="calc-controls">
+
+            <div class="field">
+              <label class="field-label" for="loanAmountEr">Loan amount</label>
+              <div class="money-input">
+                <span class="money-prefix">$</span>
+                <input type="text" id="loanAmountEr" inputmode="numeric" value="600,000" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field-label" id="freqLabelEr">Payment frequency</span>
+              <div class="segmented" role="group" aria-labelledby="freqLabelEr" id="segEr">
+                <button type="button" data-freq="weekly">Weekly</button>
+                <button type="button" data-freq="fortnightly">Fortnightly</button>
+                <button type="button" data-freq="monthly" class="active">Monthly</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="rateEr">
+                Interest rate
+                <span class="field-value">
+                  <input type="number" class="inline-num" id="rateInputEr" min="1" max="10" step="0.05" value="5.9" inputmode="decimal">
+                  <span class="unit">% p.a.</span>
+                </span>
+              </label>
+              <input type="range" id="rateEr" min="1" max="10" step="0.05" value="5.9" aria-label="Interest rate slider">
+              <div class="range-ends"><span>1%</span><span>10%</span></div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="termEr">
+                Loan term
+                <span class="field-value">
+                  <input type="number" class="inline-num" id="termInputEr" min="1" max="40" step="1" value="30" inputmode="numeric">
+                  <span class="unit">years</span>
+                </span>
+              </label>
+              <input type="range" id="termEr" min="1" max="40" step="1" value="30" aria-label="Loan term slider">
+              <div class="range-ends"><span>1 yr</span><span>40 yrs</span></div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="extraEr">Extra contribution <span class="unit" id="extraFreqNote">(per month)</span></label>
+              <div class="money-input">
+                <span class="money-prefix">$</span>
+                <input type="text" id="extraEr" inputmode="numeric" value="200" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="startEr">
+                Extra contribution starts after
+                <span class="field-value">
+                  <span id="startErValue">0</span>
+                  <span class="unit">years</span>
+                </span>
+              </label>
+              <input type="range" id="startEr" min="0" max="30" step="1" value="0" aria-label="Years before extra contributions start">
+              <div class="range-ends"><span>Now</span><span>30 yrs</span></div>
+            </div>
+
+          </div>
+
+          <!-- =========== Results =========== -->
+          <div class="calc-results">
+
+            <div class="repayment-hero hero-pair" id="erHero">
+              <div class="hero-cell">
+                <div class="repayment-label">Interest saved</div>
+                <div class="repayment-amount" id="erInterestSaved">–</div>
+              </div>
+              <div class="hero-cell">
+                <div class="repayment-label">Time saved</div>
+                <div class="repayment-amount" id="erTimeSaved">–</div>
+              </div>
+              <div class="hero-tip" id="erHeroTip" role="tooltip"></div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat">
+                <span class="stat-label">Loan paid off in</span>
+                <span class="stat-value" id="erPayoff">–</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Interest payable</span>
+                <span class="stat-value" id="erInterestPayable">–</span>
+              </div>
+            </div>
+
+            <div class="chart-wrap" id="erChartWrap">
+              <div class="chart-legend">
+                <span class="key"><span class="swatch swatch-ink"></span>Without extra repayments</span>
+                <span class="key"><span class="swatch swatch-gold"></span>With extra repayments</span>
+              </div>
+              <canvas id="erChart" class="calc-chart" height="260" aria-label="Chart comparing the loan balance over time with and without extra repayments" role="img"></canvas>
+              <div class="chart-tip" id="erChartTip" role="status" aria-live="polite"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================
+           TOOL D — KEY TERMS
+           Not a calculator — a plain-
+           English glossary of common
+           mortgage terminology.
+      ================================= -->
+      <div class="tool-panel" id="toolTerms" role="tabpanel" aria-labelledby="tabTerms" hidden>
+
+        <h1 class="calc-title">Staple terms, plain English</h1>
+
+        <div class="terms-layout">
+
+          <nav class="terms-nav" aria-label="Term categories">
+            <button type="button" class="terms-nav-btn active" data-terms="termsBasics" aria-expanded="true">The Basics</button>
+            <button type="button" class="terms-nav-btn" data-terms="termsAcronyms" aria-expanded="false">Mortgage Terms</button>
+            <button type="button" class="terms-nav-btn" data-terms="termsLoanTypes" aria-expanded="false">Loan Types</button>
+            <button type="button" class="terms-nav-btn" data-terms="termsFeatures" aria-expanded="false">Loan Features</button>
+          </nav>
+
+          <div class="terms-content">
+
+            <div class="terms-panel" id="termsBasics">
+              <dl class="term-list">
+                <dt>Deposit</dt>
+                <dd>The amount of your own money you contribute towards buying the property. A larger deposit usually means you need to borrow less.</dd>
+                <dt>Refinance</dt>
+                <dd>Replacing your existing home loan with a new one, either with your current lender or a different lender, to access a better interest rate, different loan features, or your available equity.</dd>
+                <dt>Principal</dt>
+                <dd>The amount of money you borrow from the lender to buy a property. As you make repayments, your principal gradually reduces.</dd>
+                <dt>Interest</dt>
+                <dd>The cost of borrowing money from the lender. It is calculated as a percentage of your remaining loan balance.</dd>
+                <dt>Equity</dt>
+                <dd>The portion of the property's value that you own. It is the property's current market value minus the remaining balance of your home loan.</dd>
+                <dt>Broker</dt>
+                <dd>A mortgage broker compares home loans from a panel of lenders, recommends suitable options based on your circumstances, and helps manage the application process. In most cases, brokers are paid by the lender rather than the borrower.</dd>
+              </dl>
+            </div>
+
+            <div class="terms-panel" id="termsAcronyms" hidden>
+              <dl class="term-list">
+                <dt>LVR <span class="term-expansion">(Loan-to-Value Ratio)</span></dt>
+                <dd>The size of your loan compared to the property's value, expressed as a percentage. For example, borrowing $400,000 to buy a $500,000 property gives you an LVR of 80%.</dd>
+                <dt>LMI <span class="term-expansion">(Lenders Mortgage Insurance)</span></dt>
+                <dd>A one-off insurance premium usually required when borrowing more than 80% of a property's value. It protects the lender—not you—if you're unable to repay your loan.</dd>
+                <dt>Pre-Approval</dt>
+                <dd>A conditional letter from a lender stating how much they are likely willing to let you borrow. This gives you a clear budget when house hunting.</dd>
+                <dt>Comparison Rate</dt>
+                <dd>A rate that combines the interest rate with most loan fees and charges, giving you a better idea of the overall cost of a loan compared with others.</dd>
+                <dt>First Home Owner Grant (FHOG)</dt>
+                <dd>A government payment available to eligible first home buyers, usually when buying or building a new home. Eligibility and grant amounts vary between each state and territory.</dd>
+                <dt>Settlement</dt>
+                <dd>The day ownership of the property officially transfers to you, and your lender pays the purchase funds to the seller.</dd>
+                <dt>Guarantor</dt>
+                <dd>Someone, usually a parent or close family member, who offers part of their property's equity as security to help you qualify for a home loan or reduce the need for Lenders Mortgage Insurance.
+</dd>
+              </dl>
+            </div>
+
+            <div class="terms-panel" id="termsLoanTypes" hidden>
+              <dl class="term-list">
+                <dt>Variable Rate</dt>
+                <dd>An interest rate that can rise or fall over time. Your repayments may change when the lender adjusts its rates, offering greater flexibility but less repayment certainty.</dd>
+                <dt>Fixed Rate</dt>
+                <dd>An interest rate that is locked in for a set period (usually 1 to 5 years). Your repayments stay the same during this time, providing greater budgeting certainty.</dd>
+                <dt>Interest Only</dt>
+                <dd>A loan where, for an agreed period (usually 1 to 5 years), your repayments cover only the interest charged rather than reducing the amount you borrowed. While repayments are lower during this period, you'll generally pay more interest over the life of the loan.</dd>
+                <dt>Construction Loan</dt>
+                <dd>A loan designed for building a home rather than buying one. The money is released in stages as the build progresses, and you typically only pay interest on the amount drawn down so far.</dd>
+                <dt>Split Loan</dt>
+                <dd>A home loan that combines both fixed and variable interest rates, allowing you to divide your loan between the two.</dd>
+              </dl>
+            </div>
+
+            <div class="terms-panel" id="termsFeatures" hidden>
+              <dl class="term-list">
+                <dt>Offset Account</dt>
+                <dd>An everyday transaction account linked to your home loan. The balance in the account reduces the amount of your loan charged interest, helping you save on interest over time.</dd>
+                <dt>Redraw Facility</dt>
+                <dd>A feature that allows you to make additional repayments on your home loan and access those extra funds later if needed, subject to your lender's conditions.</dd>
+              </dl>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <footer class="fineprint calc-fineprint">
+        Please note: All calculations on this page are indicative estimates based on your inputs, assuming a fixed interest rate and excluding fees or lender-specific criteria. This information is general only and does not constitute financial or credit advice.
+      </footer>
+
+    </div>
+
+    <!-- ================================
+         VIEW 3 — CONTACT
+    ================================= -->
+    <div class="view view-contact" id="viewContact" hidden>
+
+      <header class="calc-header">
+        <a href="#home" class="calc-brand" aria-label="Staple Finance — home">
+          <svg class="logo-mark" viewBox="0 0 234.395 168.087" role="img" aria-label="">
+            <g transform="matrix(1.4234267,0,0,1.4234267,-28.850034,-114.42815)">
+              <path fill="#323439" d="m 102.59697,80.389591 c -5.995126,-0.03627 -12.215134,3.16446 -16.22981,8.991109 l -64.279208,93.29066 c -0.02399,0.0345 -0.04761,0.0691 -0.07116,0.10383 l -0.01343,0.0189 c -1.130088,1.6703 -1.735381,3.6522 -1.735343,5.68198 6e-5,5.5226 4.387096,9.99937 9.798516,9.99928 0.04978,4e-5 0.09943,-3e-5 0.14921,-7.3e-4 v 7.3e-4 h 11.816306 l 60.570729,-84.5544 60.57073,84.5544 h 11.86423 v -3.6e-4 c 0.0338,3.5e-4 0.0675,3.7e-4 0.10129,3.6e-4 5.41142,1e-4 9.79845,-4.47668 9.79851,-9.99928 -0.003,-2.03107 -0.61302,-4.01308 -1.74732,-5.68198 h 0.0116 l -0.10964,-0.15864 -0.001,-0.002 -7.3e-4,-0.001 -64.2527,-93.251447 c -4.01714,-5.830227 -10.2422,-9.031735 -16.24071,-8.991472 z"/>
+              <path fill="#cbac48" transform="matrix(0.90777904,0,0,0.7310362,14.575642,61.679093)" d="m 96.969789,97.631096 51.670271,89.495534 -103.340543,0 z"/>
+            </g>
+          </svg>
+          <span class="logo-staple">STAPLE</span>
+          <span class="logo-divider" aria-hidden="true"></span>
+          <span class="logo-finance">Finance</span>
+        </a>
+        <a href="#home" class="back-link">&larr; Back</a>
+      </header>
+
+      <div class="contact-inner">
+
+        <h1 class="calc-title">Get in touch</h1>
+
+        <p class="contact-lede">
+          Tell us a little about what you're after and we'll get back
+          to you, usually within one business day.
+        </p>
+
+        <form id="contactForm" novalidate>
+
+          <div class="field">
+            <label class="field-label" for="ctName">Name</label>
+            <input type="text" class="text-input" id="ctName" name="name" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="ctEmail">Email</label>
+            <input type="email" class="text-input" id="ctEmail" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="ctMessage">Message</label>
+            <textarea class="text-input text-area" id="ctMessage" name="message" rows="5" required></textarea>
+          </div>
+
+          <!-- Honeypot — invisible to humans;
+               bots that fill it are silently
+               ignored. -->
+          <input type="checkbox" name="botcheck" id="ctBotcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="contact-actions">
+            <button type="submit" class="btn" id="ctSubmit">Send message</button>
+          </div>
+
+          <p class="contact-status" id="ctStatus" role="status" aria-live="polite"></p>
+
+        </form>
+
+        <!-- Shown in place of the form after
+             a successful send -->
+        <div class="contact-success" id="ctSuccess" hidden>
+          <div class="contact-success-mark" aria-hidden="true">&#10003;</div>
+          <h2>Thanks — message received.</h2>
+          <p>We'll be in touch shortly. If it's urgent, feel free to email us directly.</p>
+        </div>
+
+        <p class="alt-contact">
+          or email <a href="mailto:hello@staplefinance.com.au">hello@staplefinance.com.au</a>
+        </p>
+
+      </div>
+
+    </div>
+
+  </main>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ====================================
+     PART 1 — VIEW ROUTER + CARD MORPH
+     Swapping views uses the FLIP
+     technique: measure the card, swap
+     the content, measure again, then
+     animate from the old size to the
+     new size. Works in every browser.
+  ==================================== */
+  var card     = document.getElementById("card");
+  var viewHome = document.getElementById("viewHome");
+  var viewCalc = document.getElementById("viewCalc");
+  var viewContact = document.getElementById("viewContact");
+  var VIEWS = { home: viewHome, calc: viewCalc, contact: viewContact };
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var morphTimer = null;
+
+  function currentTarget() {
+    if (location.hash === "#calculator" || location.hash === "#tools") return "calc";
+    if (location.hash === "#contact") return "contact";
+    return "home";
+  }
+
+  /* Generic FLIP morph: runs swapFn (which
+     changes the DOM), then animates the card
+     smoothly from its old size to its new one.
+     Used for the view switches and the
+     tool-tab switch below. */
+  var morphCleanup = null; /* finalizer for an in-flight morph */
+
+  function morphCard(swapFn, enterEl) {
+    if (reduceMotion.matches) {
+      swapFn();
+      return;
+    }
+
+    /* If a previous morph is still running,
+       finish it NOW — otherwise its pinned
+       inline sizes corrupt the measurements
+       below, and its safety timer later
+       wipes ours mid-animation. */
+    if (morphCleanup) morphCleanup();
+
+    var first = card.getBoundingClientRect();
+    swapFn();
+    var second = card.getBoundingClientRect();
+
+    /* Release the max-width cap while
+       animating: the target view's class may
+       cap the card NARROWER than the pinned
+       start width (e.g. home 1000px ->
+       contact 620px), which would clamp the
+       pin instantly and kill the animation.
+       Pixel sizes are pinned on both ends,
+       so nothing can actually overflow. */
+    card.style.maxWidth = "none";
+    card.style.width  = first.width + "px";
+    card.style.height = first.height + "px";
+    void card.offsetWidth; /* force the browser to apply it */
+
+    card.classList.add("morphing");
+    if (enterEl) enterEl.classList.add("view-enter");
+    card.style.width  = second.width + "px";
+    card.style.height = second.height + "px";
+
+    var done = function () {
+      card.classList.remove("morphing");
+      card.style.width = "";
+      card.style.height = "";
+      card.style.maxWidth = "";
+      if (enterEl) enterEl.classList.remove("view-enter");
+    };
+
+    function handler(e) {
+      if (e.target !== card) return;
+      finish();
+    }
+
+    function finish() {
+      card.removeEventListener("transitionend", handler);
+      clearTimeout(morphTimer);
+      morphCleanup = null;
+      done();
+    }
+
+    morphCleanup = finish;
+    card.addEventListener("transitionend", handler);
+    morphTimer = setTimeout(finish, 600); /* safety net */
+  }
+
+  function applyView(target, animate) {
+    var showEl = VIEWS[target];
+    if (!showEl.hidden) return; /* already showing */
+
+    function swap() {
+      for (var key in VIEWS) {
+        VIEWS[key].hidden = (key !== target);
+      }
+      card.classList.toggle("calc-active", target === "calc");
+      card.classList.toggle("contact-active", target === "contact");
+      if (target === "calc") updateActiveTool(); /* draw chart at new width */
+    }
+
+    if (!animate) {
+      swap();
+      return;
+    }
+
+    morphCard(swap, showEl);
+  }
+
+  window.addEventListener("hashchange", function () {
+    applyView(currentTarget(), true);
+  });
+
+  /* ====================================
+     PART 2 — SHARED MATH + CHART HELPERS
+     Both tools (repayment + borrowing
+     capacity) share the same amortisation
+     maths and the same chart/tooltip
+     rendering; only the direction of the
+     calculation differs (see Part 3/4).
+  ==================================== */
+  var PERIODS = { weekly: 52, fortnightly: 26, monthly: 12 };
+  var FREQ_LABEL = { weekly: "Weekly repayments", fortnightly: "Fortnightly repayments", monthly: "Monthly repayments" };
+
+  function fmt(v) {
+    return "$" + Math.round(v).toLocaleString("en-AU");
+  }
+  function fmtShort(v) {
+    if (v >= 1e6) return "$" + (v / 1e6).toFixed(v >= 1e7 ? 0 : 1) + "m";
+    if (v >= 1e3) return "$" + Math.round(v / 1e3) + "k";
+    return "$" + Math.round(v);
+  }
+  function clamp(v, lo, hi) {
+    return Math.min(hi, Math.max(lo, v));
+  }
+
+  /* Loan amount -> periodic repayment */
+  function repaymentPerPeriod(L, annualPct, years, periodsPerYear) {
+    var r = annualPct / 100 / periodsPerYear;
+    var n = years * periodsPerYear;
+    if (r === 0) return L / n;
+    return (L * r) / (1 - Math.pow(1 + r, -n));
+  }
+
+  /* Periodic repayment -> loan amount
+     (the inverse of the above — this is
+     the borrowing-capacity direction) */
+  function loanFromRepayment(pay, annualPct, years, periodsPerYear) {
+    var r = annualPct / 100 / periodsPerYear;
+    var n = years * periodsPerYear;
+    if (r === 0) return pay * n;
+    return (pay * (1 - Math.pow(1 + r, -n))) / r;
+  }
+
+  function balanceAfter(L, r, pay, k) {
+    if (r === 0) return Math.max(0, L - pay * k);
+    var g = Math.pow(1 + r, k);
+    return Math.max(0, L * g - (pay * (g - 1)) / r);
+  }
+
+  /* ------------------------------------
+     Chart factory — two declining lines.
+     · ink  = total remaining to pay
+     · gold = principal still owed
+     The grey band between them is the
+     interest still to be paid; the gold
+     area under the principal line is
+     the principal still owed.
+     Returns { setData, redraw } bound to
+     one canvas/tooltip pair, so each tool
+     gets its own independent chart.
+  ------------------------------------ */
+  function createChart(canvas, chartWrap, chartTip) {
+    var ctx = canvas.getContext("2d");
+    var geo = null;
+    var hoverYear = null;
+
+    function draw() {
+      if (!geo) return;
+
+      var dpr = window.devicePixelRatio || 1;
+      var cssW = canvas.clientWidth;
+      var cssH = 260;
+      if (cssW === 0) return; /* view/tab is hidden */
+      canvas.width = cssW * dpr;
+      canvas.height = cssH * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      var padL = 52, padR = 10, padT = 12, padB = 30;
+      var w = cssW - padL - padR;
+      var h = cssH - padT - padB;
+
+      geo.padL = padL; geo.w = w;
+
+      var years = geo.years;
+      var maxY = geo.maxY;
+
+      function X(yy) { return padL + (yy / years) * w; }
+      function Y(v)  { return padT + h - (v / maxY) * h; }
+
+      ctx.clearRect(0, 0, cssW, cssH);
+      ctx.font = "10px Inter, sans-serif";
+      ctx.fillStyle = "#b4b1a8";
+
+      ctx.strokeStyle = "#efece3";
+      ctx.lineWidth = 1;
+      var steps = 4;
+      for (var i = 0; i <= steps; i++) {
+        var v = (maxY / steps) * i;
+        var gy = Y(v);
+        ctx.beginPath();
+        ctx.moveTo(padL, gy);
+        ctx.lineTo(padL + w, gy);
+        ctx.stroke();
+        ctx.textAlign = "right";
+        ctx.fillText(fmtShort(v), padL - 8, gy + 3);
+      }
+
+      ctx.textAlign = "center";
+      var xStep = years > 30 ? 10 : years > 12 ? 5 : years > 6 ? 2 : 1;
+      for (var yr = 0; yr <= years; yr += xStep) {
+        ctx.fillText(yr, X(yr), padT + h + 18);
+      }
+      ctx.fillText("Years", padL + w / 2, padT + h + 30);
+
+      ctx.beginPath();
+      ctx.moveTo(X(0), Y(geo.totalRemaining[0]));
+      for (var a = 1; a <= years; a++) ctx.lineTo(X(a), Y(geo.totalRemaining[a]));
+      for (var b = years; b >= 0; b--) ctx.lineTo(X(b), Y(geo.balance[b]));
+      ctx.closePath();
+      ctx.fillStyle = "rgba(50, 52, 57, 0.08)";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(X(0), Y(geo.balance[0]));
+      for (var c = 1; c <= years; c++) ctx.lineTo(X(c), Y(geo.balance[c]));
+      ctx.lineTo(X(years), Y(0));
+      ctx.lineTo(X(0), Y(0));
+      ctx.closePath();
+      ctx.fillStyle = "rgba(203, 172, 72, 0.14)";
+      ctx.fill();
+
+      function line(series, color) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.lineJoin = "round";
+        ctx.beginPath();
+        for (var p = 0; p <= years; p++) {
+          var px = X(p), py = Y(series[p]);
+          if (p === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+      }
+
+      line(geo.totalRemaining, "#323439");
+      line(geo.balance, "#cbac48");
+
+      if (hoverYear !== null) {
+        var hx = X(hoverYear);
+        ctx.strokeStyle = "#d8d5cc";
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.moveTo(hx, padT);
+        ctx.lineTo(hx, padT + h);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        function dot(v, color) {
+          ctx.beginPath();
+          ctx.arc(hx, Y(v), 4, 0, Math.PI * 2);
+          ctx.fillStyle = color;
+          ctx.fill();
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+        dot(geo.totalRemaining[hoverYear], "#323439");
+        dot(geo.balance[hoverYear], "#cbac48");
+      }
+    }
+
+    function showTip(e) {
+      if (!geo || !geo.w) return;
+
+      var rect = canvas.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var frac = clamp((x - geo.padL) / geo.w, 0, 1);
+      var yr = Math.round(frac * geo.years);
+
+      if (yr !== hoverYear) {
+        hoverYear = yr;
+        draw();
+      }
+
+      var balance = geo.balance[yr];
+      var principalPaid = geo.principal - balance;
+      var paidToDate = geo.pay * geo.periods * yr;
+      var interestPaid = Math.max(0, paidToDate - principalPaid);
+
+      chartTip.innerHTML =
+        '<div class="tip-year">Year ' + yr + "</div>" +
+        '<div class="tip-row"><span class="tip-dot" style="background:#cbac48"></span>Balance<b>' + fmt(balance) + "</b></div>" +
+        '<div class="tip-row"><span class="tip-dot" style="background:#323439"></span>Principal paid<b>' + fmt(principalPaid) + "</b></div>" +
+        '<div class="tip-row"><span class="tip-dot tip-dot-hollow"></span>Interest paid<b>' + fmt(interestPaid) + "</b></div>";
+      chartTip.style.display = "block";
+
+      var wrapRect = chartWrap.getBoundingClientRect();
+      var tipW = chartTip.offsetWidth;
+      var left = e.clientX - wrapRect.left + 16;
+      if (left + tipW > wrapRect.width - 4) {
+        left = e.clientX - wrapRect.left - tipW - 16;
+      }
+      var top = e.clientY - wrapRect.top + 16;
+      var tipH = chartTip.offsetHeight;
+      if (top + tipH > wrapRect.height - 4) {
+        top = e.clientY - wrapRect.top - tipH - 12;
+      }
+      chartTip.style.left = left + "px";
+      chartTip.style.top = top + "px";
+    }
+
+    function hideTip() {
+      chartTip.style.display = "none";
+      if (hoverYear !== null) {
+        hoverYear = null;
+        draw();
+      }
+    }
+
+    canvas.addEventListener("mousemove", showTip);
+    canvas.addEventListener("mouseleave", hideTip);
+
+    return {
+      setData: function (pay, periods, years, balance, totalRemaining, maxY, principal) {
+        geo = {
+          pay: pay,
+          periods: periods,
+          years: years,
+          balance: balance,
+          totalRemaining: totalRemaining,
+          maxY: maxY,
+          principal: principal
+        };
+        hoverYear = null;
+        hideTip();
+        draw();
+      },
+      redraw: draw
+    };
+  }
+
+  /* Builds the year-by-year balance/
+     total-remaining arrays that feed a
+     chart, given a settled loan amount,
+     rate, term and periodic repayment. */
+  function buildSchedule(loanAmount, rate, term, periods, pay) {
+    var r = rate / 100 / periods;
+    var n = term * periods;
+    var balance = [], totalRemaining = [];
+    for (var y = 0; y <= term; y++) {
+      var k = y * periods;
+      balance.push(balanceAfter(loanAmount, r, pay, k));
+      totalRemaining.push(pay * (n - k));
+    }
+    return { balance: balance, totalRemaining: totalRemaining };
+  }
+
+  /* Builds the borrowing-capacity curve:
+     for a fixed repayment/term/frequency,
+     how much could be borrowed at each
+     interest rate across the slider's
+     full range. Capacity falls as rate
+     rises, so this is always a smooth,
+     single downward curve. */
+  function buildCapacityCurve(pay, term, periods, minRate, maxRate, step) {
+    var rates = [], capacities = [];
+    var steps = Math.round((maxRate - minRate) / step);
+    for (var i = 0; i <= steps; i++) {
+      var r = Math.round((minRate + i * step) * 100) / 100;
+      rates.push(r);
+      capacities.push(loanFromRepayment(pay, r, term, periods));
+    }
+    return { rates: rates, capacities: capacities };
+  }
+
+  /* ------------------------------------
+     Chart factory for the borrowing-
+     capacity tool — a single line
+     plotting capacity (Y) against
+     interest rate (X), with a fixed gold
+     dot marking the person's currently
+     selected rate, and a scrubbable
+     tooltip along the curve.
+  ------------------------------------ */
+  function createRateChart(canvas, chartWrap, chartTip) {
+    var ctx = canvas.getContext("2d");
+    var geo = null;
+    var hoverRate = null;
+
+    function nearestIndex(rate) {
+      var idx = Math.round((rate - geo.minRate) / geo.step);
+      return clamp(idx, 0, geo.rates.length - 1);
+    }
+
+    function draw() {
+      if (!geo) return;
+
+      var dpr = window.devicePixelRatio || 1;
+      var cssW = canvas.clientWidth;
+      var cssH = 260;
+      if (cssW === 0) return; /* tab is hidden */
+      canvas.width = cssW * dpr;
+      canvas.height = cssH * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      var padL = 58, padR = 10, padT = 12, padB = 30;
+      var w = cssW - padL - padR;
+      var h = cssH - padT - padB;
+
+      geo.padL = padL; geo.w = w;
+
+      var minRate = geo.minRate, maxRate = geo.maxRate, maxCap = geo.maxCap;
+
+      function X(r) { return padL + ((r - minRate) / (maxRate - minRate)) * w; }
+      function Y(v) { return padT + h - (v / maxCap) * h; }
+
+      ctx.clearRect(0, 0, cssW, cssH);
+      ctx.font = "10px Inter, sans-serif";
+      ctx.fillStyle = "#b4b1a8";
+
+      /* horizontal gridlines + $ labels */
+      ctx.strokeStyle = "#efece3";
+      ctx.lineWidth = 1;
+      var ySteps = 4;
+      for (var i = 0; i <= ySteps; i++) {
+        var v = (maxCap / ySteps) * i;
+        var gy = Y(v);
+        ctx.beginPath();
+        ctx.moveTo(padL, gy);
+        ctx.lineTo(padL + w, gy);
+        ctx.stroke();
+        ctx.textAlign = "right";
+        ctx.fillText(fmtShort(v), padL - 8, gy + 3);
+      }
+
+      /* x-axis rate labels */
+      ctx.textAlign = "center";
+      var xStep = (maxRate - minRate) > 6 ? 2 : 1;
+      for (var r = Math.ceil(minRate); r <= maxRate; r += xStep) {
+        ctx.fillText(r + "%", X(r), padT + h + 18);
+      }
+      ctx.fillText("Interest rate (% p.a.)", padL + w / 2, padT + h + 30);
+
+      /* gold area under the curve */
+      ctx.beginPath();
+      ctx.moveTo(X(geo.rates[0]), Y(0));
+      for (var a = 0; a < geo.rates.length; a++) ctx.lineTo(X(geo.rates[a]), Y(geo.capacities[a]));
+      ctx.lineTo(X(geo.rates[geo.rates.length - 1]), Y(0));
+      ctx.closePath();
+      ctx.fillStyle = "rgba(203, 172, 72, 0.14)";
+      ctx.fill();
+
+      /* the capacity curve itself */
+      ctx.strokeStyle = "#323439";
+      ctx.lineWidth = 2;
+      ctx.lineJoin = "round";
+      ctx.beginPath();
+      for (var p = 0; p < geo.rates.length; p++) {
+        var px = X(geo.rates[p]), py = Y(geo.capacities[p]);
+        if (p === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+
+      /* fixed marker — the person's
+         currently selected rate */
+      var cx = X(geo.currentRate), cy = Y(geo.currentCap);
+      ctx.strokeStyle = "#d8d5cc";
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 3]);
+      ctx.beginPath();
+      ctx.moveTo(cx, padT);
+      ctx.lineTo(cx, padT + h);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = "#cbac48";
+      ctx.fill();
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      /* scrub marker — wherever the
+         mouse is hovering */
+      if (hoverRate !== null && hoverRate !== geo.currentRate) {
+        var hIdx = nearestIndex(hoverRate);
+        var hx = X(geo.rates[hIdx]), hy = Y(geo.capacities[hIdx]);
+        ctx.beginPath();
+        ctx.arc(hx, hy, 4, 0, Math.PI * 2);
+        ctx.fillStyle = "#323439";
+        ctx.fill();
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+    }
+
+    function showTip(e) {
+      if (!geo || !geo.w) return;
+
+      var rect = canvas.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var frac = clamp((x - geo.padL) / geo.w, 0, 1);
+      var rate = geo.minRate + frac * (geo.maxRate - geo.minRate);
+      var idx = nearestIndex(rate);
+      var snappedRate = geo.rates[idx];
+
+      if (snappedRate !== hoverRate) {
+        hoverRate = snappedRate;
+        draw();
+      }
+
+      chartTip.innerHTML =
+        '<div class="tip-year">' + snappedRate.toFixed(2) + "% p.a.</div>" +
+        '<div class="tip-row"><span class="tip-dot" style="background:#323439"></span>Borrowing capacity<b>' + fmt(geo.capacities[idx]) + "</b></div>";
+      chartTip.style.display = "block";
+
+      var wrapRect = chartWrap.getBoundingClientRect();
+      var tipW = chartTip.offsetWidth;
+      var left = e.clientX - wrapRect.left + 16;
+      if (left + tipW > wrapRect.width - 4) {
+        left = e.clientX - wrapRect.left - tipW - 16;
+      }
+      var top = e.clientY - wrapRect.top + 16;
+      var tipH = chartTip.offsetHeight;
+      if (top + tipH > wrapRect.height - 4) {
+        top = e.clientY - wrapRect.top - tipH - 12;
+      }
+      chartTip.style.left = left + "px";
+      chartTip.style.top = top + "px";
+    }
+
+    function hideTip() {
+      chartTip.style.display = "none";
+      if (hoverRate !== null) {
+        hoverRate = null;
+        draw();
+      }
+    }
+
+    canvas.addEventListener("mousemove", showTip);
+    canvas.addEventListener("mouseleave", hideTip);
+
+    return {
+      setData: function (rates, capacities, minRate, maxRate, step, maxCap, currentRate, currentCap) {
+        geo = {
+          rates: rates,
+          capacities: capacities,
+          minRate: minRate,
+          maxRate: maxRate,
+          step: step,
+          maxCap: maxCap,
+          currentRate: currentRate,
+          currentCap: currentCap
+        };
+        hoverRate = null;
+        hideTip();
+        draw();
+      },
+      redraw: draw
+    };
+  }
+
+  /* ====================================
+     PART 3 — TOOL A: REPAYMENT CALCULATOR
+  ==================================== */
+  var amountEl  = document.getElementById("loanAmount");
+  var rateEl    = document.getElementById("rate");
+  var termEl    = document.getElementById("term");
+  var rateInput = document.getElementById("rateInput");
+  var termInput = document.getElementById("termInput");
+  var segBtns   = document.querySelectorAll("#toolRepayment .segmented button");
+  var repayLbl  = document.getElementById("repaymentLabel");
+  var repayAmt  = document.getElementById("repaymentAmount");
+  var repayMo   = document.getElementById("repaymentMonthly");
+  var intEl     = document.getElementById("totalInterest");
+  var paidEl    = document.getElementById("totalPaid");
+
+  /* Initial state comes straight from the
+     HTML — edit the input `value`
+     attributes to change the defaults;
+     nothing here needs touching. */
+  var state = {
+    amount: parseInt(amountEl.value.replace(/[^0-9]/g, ""), 10) || 0,
+    freq: (document.querySelector("#toolRepayment .segmented button.active") || {}).dataset
+            ? document.querySelector("#toolRepayment .segmented button.active").dataset.freq
+            : "monthly",
+    rate: parseFloat(rateEl.value),
+    term: parseInt(termEl.value, 10)
+  };
+  /* normalise the box's display (adds
+     thousands separators if the HTML
+     default was typed without them) */
+  amountEl.value = state.amount ? state.amount.toLocaleString("en-AU") : "";
+
+  var chartRepay = createChart(
+    document.getElementById("chart"),
+    document.getElementById("chartWrap"),
+    document.getElementById("chartTip")
+  );
+
+  function updateRepayment() {
+    var periods = PERIODS[state.freq];
+    var pay = repaymentPerPeriod(state.amount, state.rate, state.term, periods);
+    var totalPaid = pay * periods * state.term;
+
+    repayLbl.textContent = FREQ_LABEL[state.freq];
+    repayAmt.textContent = fmt(pay);
+    state._pay = pay; /* for the hero tooltip */
+
+    if (state.freq !== "monthly") {
+      var monthlyPay = repaymentPerPeriod(state.amount, state.rate, state.term, 12);
+      repayMo.textContent = "\u2248 " + fmt(monthlyPay) + " per month";
+    } else {
+      repayMo.textContent = "";
+    }
+
+    intEl.textContent  = fmt(totalPaid - state.amount);
+    paidEl.textContent = fmt(totalPaid);
+
+    var sched = buildSchedule(state.amount, state.rate, state.term, periods, pay);
+    chartRepay.setData(pay, periods, state.term, sched.balance, sched.totalRemaining, totalPaid, state.amount);
+  }
+
+  amountEl.addEventListener("input", function () {
+    var digits = amountEl.value.replace(/[^0-9]/g, "").slice(0, 9);
+    state.amount = digits ? parseInt(digits, 10) : 0;
+    amountEl.value = state.amount ? state.amount.toLocaleString("en-AU") : "";
+    updateRepayment();
+  });
+
+  rateEl.addEventListener("input", function () {
+    state.rate = parseFloat(rateEl.value);
+    rateInput.value = state.rate;
+    updateRepayment();
+  });
+
+  rateInput.addEventListener("input", function () {
+    var v = parseFloat(rateInput.value);
+    if (!isNaN(v) && v >= 1 && v <= 10) {
+      state.rate = v;
+      rateEl.value = v;
+      updateRepayment();
+    }
+  });
+
+  rateInput.addEventListener("change", function () {
+    var v = parseFloat(rateInput.value);
+    if (isNaN(v)) v = state.rate;
+    v = clamp(v, 1, 10);
+    state.rate = v;
+    rateInput.value = v;
+    rateEl.value = v;
+    updateRepayment();
+  });
+
+  termEl.addEventListener("input", function () {
+    state.term = parseInt(termEl.value, 10);
+    termInput.value = state.term;
+    updateRepayment();
+  });
+
+  termInput.addEventListener("input", function () {
+    var v = parseInt(termInput.value, 10);
+    if (!isNaN(v) && v >= 1 && v <= 40) {
+      state.term = v;
+      termEl.value = v;
+      updateRepayment();
+    }
+  });
+
+  termInput.addEventListener("change", function () {
+    var v = parseInt(termInput.value, 10);
+    if (isNaN(v)) v = state.term;
+    v = clamp(v, 1, 40);
+    state.term = v;
+    termInput.value = v;
+    termEl.value = v;
+    updateRepayment();
+  });
+
+  segBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      segBtns.forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      state.freq = btn.dataset.freq;
+      updateRepayment();
+    });
+  });
+
+  /* ====================================
+     PART 4 — TOOL B: BORROWING CAPACITY
+     Same maths, opposite direction: the
+     person tells us what they can repay
+     per period, and we solve for the
+     loan amount that repayment supports.
+  ==================================== */
+  var affordEl     = document.getElementById("affordAmount");
+  var rateCapEl    = document.getElementById("rateCap");
+  var termCapEl    = document.getElementById("termCap");
+  var rateInputCap = document.getElementById("rateInputCap");
+  var termInputCap = document.getElementById("termInputCap");
+  var segCapBtns   = document.querySelectorAll("#toolCapacity .segmented button");
+  var capAmountEl  = document.getElementById("capacityAmount");
+  var capIntEl     = document.getElementById("capTotalInterest");
+  var capPaidEl    = document.getElementById("capTotalPaid");
+
+  /* Initial state comes straight from the
+     HTML — edit the input `value`
+     attributes to change the defaults;
+     nothing here needs touching. */
+  var capState = {
+    afford: parseInt(affordEl.value.replace(/[^0-9]/g, ""), 10) || 0,
+    freq: (document.querySelector("#toolCapacity .segmented button.active") || {}).dataset
+            ? document.querySelector("#toolCapacity .segmented button.active").dataset.freq
+            : "monthly",
+    rate: parseFloat(rateCapEl.value),
+    term: parseInt(termCapEl.value, 10)
+  };
+  affordEl.value = capState.afford ? capState.afford.toLocaleString("en-AU") : "";
+
+  var chartCap = createRateChart(
+    document.getElementById("capChart"),
+    document.getElementById("capChartWrap"),
+    document.getElementById("capChartTip")
+  );
+
+  function updateCapacity() {
+    var periods = PERIODS[capState.freq];
+    var pay = capState.afford;
+    var loanAmount = loanFromRepayment(pay, capState.rate, capState.term, periods);
+    var totalPaid = pay * periods * capState.term;
+
+    capAmountEl.textContent = fmt(loanAmount);
+    capState._capacity = loanAmount; /* for the hero tooltip */
+
+    capIntEl.textContent  = fmt(totalPaid - loanAmount);
+    capPaidEl.textContent = fmt(totalPaid);
+
+    /* Rate range matches the rate slider's
+       own bounds, so the chart always
+       shows the full range the person can
+       drag to. */
+    var minRate = parseFloat(rateCapEl.min);
+    var maxRate = parseFloat(rateCapEl.max);
+    var curve = buildCapacityCurve(pay, capState.term, periods, minRate, maxRate, 0.1);
+    var maxCap = curve.capacities[0]; /* capacity is highest at the lowest rate */
+
+    chartCap.setData(curve.rates, curve.capacities, minRate, maxRate, 0.1, maxCap, capState.rate, loanAmount);
+  }
+
+
+  affordEl.addEventListener("input", function () {
+    var digits = affordEl.value.replace(/[^0-9]/g, "").slice(0, 7);
+    capState.afford = digits ? parseInt(digits, 10) : 0;
+    affordEl.value = capState.afford ? capState.afford.toLocaleString("en-AU") : "";
+    updateCapacity();
+  });
+
+  rateCapEl.addEventListener("input", function () {
+    capState.rate = parseFloat(rateCapEl.value);
+    rateInputCap.value = capState.rate;
+    updateCapacity();
+  });
+
+  rateInputCap.addEventListener("input", function () {
+    var v = parseFloat(rateInputCap.value);
+    if (!isNaN(v) && v >= 1 && v <= 10) {
+      capState.rate = v;
+      rateCapEl.value = v;
+      updateCapacity();
+    }
+  });
+
+  rateInputCap.addEventListener("change", function () {
+    var v = parseFloat(rateInputCap.value);
+    if (isNaN(v)) v = capState.rate;
+    v = clamp(v, 1, 10);
+    capState.rate = v;
+    rateInputCap.value = v;
+    rateCapEl.value = v;
+    updateCapacity();
+  });
+
+  termCapEl.addEventListener("input", function () {
+    capState.term = parseInt(termCapEl.value, 10);
+    termInputCap.value = capState.term;
+    updateCapacity();
+  });
+
+  termInputCap.addEventListener("input", function () {
+    var v = parseInt(termInputCap.value, 10);
+    if (!isNaN(v) && v >= 1 && v <= 40) {
+      capState.term = v;
+      termCapEl.value = v;
+      updateCapacity();
+    }
+  });
+
+  termInputCap.addEventListener("change", function () {
+    var v = parseInt(termInputCap.value, 10);
+    if (isNaN(v)) v = capState.term;
+    v = clamp(v, 1, 40);
+    capState.term = v;
+    termInputCap.value = v;
+    termCapEl.value = v;
+    updateCapacity();
+  });
+
+  segCapBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      segCapBtns.forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      capState.freq = btn.dataset.freq;
+      updateCapacity();
+    });
+  });
+
+  /* ====================================
+     PART 4B — TOOL C: EARLY REPAYMENT
+     Simulates the loan period-by-period
+     twice — once at the standard
+     repayment, once with the extra
+     contribution added from the chosen
+     start year — and compares the two.
+  ==================================== */
+
+  /* "2 yrs 3 mths" style formatting for
+     payoff times and time saved */
+  function fmtDuration(months) {
+    months = Math.max(0, Math.round(months));
+    var y = Math.floor(months / 12);
+    var m = months % 12;
+    if (y === 0 && m === 0) return "0 mths";
+    var parts = [];
+    if (y > 0) parts.push(y + (y === 1 ? " yr" : " yrs"));
+    if (m > 0) parts.push(m + (m === 1 ? " mth" : " mths"));
+    return parts.join(" ");
+  }
+
+  /* Runs the loan forward period by
+     period with an optional extra
+     contribution from startYears onward.
+     Returns the payoff point, total paid,
+     and a year-by-year balance series
+     for the chart. */
+  function simulateLoan(L, annualPct, years, periods, extra, startYears) {
+    var r = annualPct / 100 / periods;
+    var n = years * periods;
+    var pay = repaymentPerPeriod(L, annualPct, years, periods);
+    var startK = startYears * periods;
+
+    var bal = L, totalPaid = 0, k = 0;
+    var yearly = [L];
+
+    while (bal > 0.005 && k < n) {
+      k++;
+      var interest = bal * r;
+      var payment = pay + (k > startK ? extra : 0);
+      if (payment > bal + interest) payment = bal + interest; /* final part-payment */
+      bal = bal + interest - payment;
+      totalPaid += payment;
+      if (k % periods === 0) yearly.push(Math.max(0, bal));
+    }
+
+    /* pad with zeros so both series span
+       the full original term */
+    while (yearly.length <= years) yearly.push(0);
+
+    return { payoffPeriods: k, totalPaid: totalPaid, yearly: yearly, pay: pay };
+  }
+
+  /* ------------------------------------
+     Chart factory for the early-repayment
+     tool — two balance curves over the
+     original term: baseline (ink) and
+     with extra contributions (gold).
+  ------------------------------------ */
+  function createCompareChart(canvas, chartWrap, chartTip) {
+    var ctx = canvas.getContext("2d");
+    var geo = null;
+    var hoverYear = null;
+
+    function draw() {
+      if (!geo) return;
+
+      var dpr = window.devicePixelRatio || 1;
+      var cssW = canvas.clientWidth;
+      var cssH = 260;
+      if (cssW === 0) return; /* tab is hidden */
+      canvas.width = cssW * dpr;
+      canvas.height = cssH * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      var padL = 58, padR = 10, padT = 12, padB = 30;
+      var w = cssW - padL - padR;
+      var h = cssH - padT - padB;
+
+      geo.padL = padL; geo.w = w;
+
+      var years = geo.years;
+      var maxY = geo.maxY;
+
+      function X(yy) { return padL + (yy / years) * w; }
+      function Y(v)  { return padT + h - (v / maxY) * h; }
+
+      ctx.clearRect(0, 0, cssW, cssH);
+      ctx.font = "10px Inter, sans-serif";
+      ctx.fillStyle = "#b4b1a8";
+
+      /* horizontal gridlines + $ labels */
+      ctx.strokeStyle = "#efece3";
+      ctx.lineWidth = 1;
+      var steps = 4;
+      for (var i = 0; i <= steps; i++) {
+        var v = (maxY / steps) * i;
+        var gy = Y(v);
+        ctx.beginPath();
+        ctx.moveTo(padL, gy);
+        ctx.lineTo(padL + w, gy);
+        ctx.stroke();
+        ctx.textAlign = "right";
+        ctx.fillText(fmtShort(v), padL - 8, gy + 3);
+      }
+
+      /* x-axis year labels */
+      ctx.textAlign = "center";
+      var xStep = years > 30 ? 10 : years > 12 ? 5 : years > 6 ? 2 : 1;
+      for (var yr = 0; yr <= years; yr += xStep) {
+        ctx.fillText(yr, X(yr), padT + h + 18);
+      }
+      ctx.fillText("Years", padL + w / 2, padT + h + 30);
+
+      /* grey band between the curves —
+         same shade as the repayment
+         chart's interest band — showing
+         the gap the extras open up */
+      ctx.beginPath();
+      ctx.moveTo(X(0), Y(geo.baseline[0]));
+      for (var a = 1; a <= years; a++) ctx.lineTo(X(a), Y(geo.baseline[a]));
+      for (var b = years; b >= 0; b--) ctx.lineTo(X(b), Y(geo.accelerated[b]));
+      ctx.closePath();
+      ctx.fillStyle = "rgba(50, 52, 57, 0.08)";
+      ctx.fill();
+
+      /* gold area beneath the 'with
+         extra repayments' curve */
+      ctx.beginPath();
+      ctx.moveTo(X(0), Y(0));
+      for (var c = 0; c <= years; c++) ctx.lineTo(X(c), Y(geo.accelerated[c]));
+      ctx.lineTo(X(years), Y(0));
+      ctx.closePath();
+      ctx.fillStyle = "rgba(203, 172, 72, 0.14)";
+      ctx.fill();
+
+      function line(series, color) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.lineJoin = "round";
+        ctx.beginPath();
+        for (var p = 0; p <= years; p++) {
+          var px = X(p), py = Y(series[p]);
+          if (p === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+      }
+
+      line(geo.baseline, "#323439");
+      line(geo.accelerated, "#cbac48");
+
+      /* hover marker */
+      if (hoverYear !== null) {
+        var hx = X(hoverYear);
+        ctx.strokeStyle = "#d8d5cc";
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.moveTo(hx, padT);
+        ctx.lineTo(hx, padT + h);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        function dot(v, color) {
+          ctx.beginPath();
+          ctx.arc(hx, Y(v), 4, 0, Math.PI * 2);
+          ctx.fillStyle = color;
+          ctx.fill();
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+        dot(geo.baseline[hoverYear], "#323439");
+        dot(geo.accelerated[hoverYear], "#cbac48");
+      }
+    }
+
+    function showTip(e) {
+      if (!geo || !geo.w) return;
+
+      var rect = canvas.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var frac = clamp((x - geo.padL) / geo.w, 0, 1);
+      var yr = Math.round(frac * geo.years);
+
+      if (yr !== hoverYear) {
+        hoverYear = yr;
+        draw();
+      }
+
+      var ahead = geo.baseline[yr] - geo.accelerated[yr];
+
+      chartTip.innerHTML =
+        '<div class="tip-year">Year ' + yr + "</div>" +
+        '<div class="tip-row"><span class="tip-dot" style="background:#323439"></span>Without extra<b>' + fmt(geo.baseline[yr]) + "</b></div>" +
+        '<div class="tip-row"><span class="tip-dot" style="background:#cbac48"></span>With extra<b>' + fmt(geo.accelerated[yr]) + "</b></div>" +
+        '<div class="tip-row"><span class="tip-dot tip-dot-hollow"></span>Ahead by<b>' + fmt(ahead) + "</b></div>";
+      chartTip.style.display = "block";
+
+      var wrapRect = chartWrap.getBoundingClientRect();
+      var tipW = chartTip.offsetWidth;
+      var left = e.clientX - wrapRect.left + 16;
+      if (left + tipW > wrapRect.width - 4) {
+        left = e.clientX - wrapRect.left - tipW - 16;
+      }
+      var top = e.clientY - wrapRect.top + 16;
+      var tipH = chartTip.offsetHeight;
+      if (top + tipH > wrapRect.height - 4) {
+        top = e.clientY - wrapRect.top - tipH - 12;
+      }
+      chartTip.style.left = left + "px";
+      chartTip.style.top = top + "px";
+    }
+
+    function hideTip() {
+      chartTip.style.display = "none";
+      if (hoverYear !== null) {
+        hoverYear = null;
+        draw();
+      }
+    }
+
+    canvas.addEventListener("mousemove", showTip);
+    canvas.addEventListener("mouseleave", hideTip);
+
+    return {
+      setData: function (years, baseline, accelerated, maxY) {
+        geo = { years: years, baseline: baseline, accelerated: accelerated, maxY: maxY };
+        hoverYear = null;
+        hideTip();
+        draw();
+      },
+      redraw: draw
+    };
+  }
+
+  var loanAmountErEl = document.getElementById("loanAmountEr");
+  var rateErEl       = document.getElementById("rateEr");
+  var termErEl       = document.getElementById("termEr");
+  var rateInputErEl  = document.getElementById("rateInputEr");
+  var termInputErEl  = document.getElementById("termInputEr");
+  var extraErEl      = document.getElementById("extraEr");
+  var startErEl      = document.getElementById("startEr");
+  var startErValueEl = document.getElementById("startErValue");
+  var segErBtns      = document.querySelectorAll("#toolEarly .segmented button");
+  var extraFreqNote  = document.getElementById("extraFreqNote");
+  var erPayoffEl     = document.getElementById("erPayoff");
+  var erIntSavedEl   = document.getElementById("erInterestSaved");
+  var erTimeSavedEl  = document.getElementById("erTimeSaved");
+  var erIntPayableEl = document.getElementById("erInterestPayable");
+
+  /* Initial state comes straight from the
+     HTML — edit the input `value`
+     attributes to change the defaults. */
+  var erState = {
+    amount: parseInt(loanAmountErEl.value.replace(/[^0-9]/g, ""), 10) || 0,
+    freq: (document.querySelector("#toolEarly .segmented button.active") || {}).dataset
+            ? document.querySelector("#toolEarly .segmented button.active").dataset.freq
+            : "monthly",
+    rate: parseFloat(rateErEl.value),
+    term: parseInt(termErEl.value, 10),
+    extra: parseInt(extraErEl.value.replace(/[^0-9]/g, ""), 10) || 0,
+    startAfter: parseInt(startErEl.value, 10)
+  };
+  loanAmountErEl.value = erState.amount ? erState.amount.toLocaleString("en-AU") : "";
+  extraErEl.value = erState.extra ? erState.extra.toLocaleString("en-AU") : "";
+
+  var chartEr = createCompareChart(
+    document.getElementById("erChart"),
+    document.getElementById("erChartWrap"),
+    document.getElementById("erChartTip")
+  );
+
+  var FREQ_UNIT = { weekly: "(per week)", fortnightly: "(per fortnight)", monthly: "(per month)" };
+
+  function updateEarly() {
+    var periods = PERIODS[erState.freq];
+    var n = erState.term * periods;
+
+    /* the start slider can't exceed the
+       loan term — clamp and reflect */
+    var maxStart = Math.max(0, erState.term - 1);
+    startErEl.max = maxStart;
+    if (erState.startAfter > maxStart) {
+      erState.startAfter = maxStart;
+      startErEl.value = maxStart;
+    }
+    startErValueEl.textContent = erState.startAfter;
+
+    extraFreqNote.textContent = FREQ_UNIT[erState.freq];
+
+    /* baseline: analytic, no extra */
+    var pay = repaymentPerPeriod(erState.amount, erState.rate, erState.term, periods);
+    var baselineTotal = pay * n;
+    var baselineInterest = baselineTotal - erState.amount;
+    var r = erState.rate / 100 / periods;
+    var baseline = [];
+    for (var y = 0; y <= erState.term; y++) {
+      baseline.push(balanceAfter(erState.amount, r, pay, y * periods));
+    }
+
+    /* accelerated: simulated with extra */
+    var sim = simulateLoan(erState.amount, erState.rate, erState.term, periods, erState.extra, erState.startAfter);
+    var accelInterest = sim.totalPaid - erState.amount;
+
+    var payoffMonths = (sim.payoffPeriods / periods) * 12;
+    var savedMonths = ((n - sim.payoffPeriods) / periods) * 12;
+    var interestSaved = Math.max(0, baselineInterest - accelInterest);
+
+    erIntSavedEl.textContent   = fmt(interestSaved);
+    erTimeSavedEl.textContent  = fmtDuration(savedMonths);
+    erPayoffEl.textContent     = fmtDuration(payoffMonths);
+    erIntPayableEl.textContent = fmt(accelInterest);
+
+    /* for the hero tooltip */
+    erState._interestSaved = interestSaved;
+    erState._savedMonths = savedMonths;
+
+    chartEr.setData(erState.term, baseline, sim.yearly, erState.amount);
+  }
+
+  loanAmountErEl.addEventListener("input", function () {
+    var digits = loanAmountErEl.value.replace(/[^0-9]/g, "").slice(0, 9);
+    erState.amount = digits ? parseInt(digits, 10) : 0;
+    loanAmountErEl.value = erState.amount ? erState.amount.toLocaleString("en-AU") : "";
+    updateEarly();
+  });
+
+  extraErEl.addEventListener("input", function () {
+    var digits = extraErEl.value.replace(/[^0-9]/g, "").slice(0, 7);
+    erState.extra = digits ? parseInt(digits, 10) : 0;
+    extraErEl.value = erState.extra ? erState.extra.toLocaleString("en-AU") : "";
+    updateEarly();
+  });
+
+  startErEl.addEventListener("input", function () {
+    erState.startAfter = parseInt(startErEl.value, 10);
+    updateEarly();
+  });
+
+  rateErEl.addEventListener("input", function () {
+    erState.rate = parseFloat(rateErEl.value);
+    rateInputErEl.value = erState.rate;
+    updateEarly();
+  });
+
+  rateInputErEl.addEventListener("input", function () {
+    var v = parseFloat(rateInputErEl.value);
+    if (!isNaN(v) && v >= 1 && v <= 10) {
+      erState.rate = v;
+      rateErEl.value = v;
+      updateEarly();
+    }
+  });
+
+  rateInputErEl.addEventListener("change", function () {
+    var v = parseFloat(rateInputErEl.value);
+    if (isNaN(v)) v = erState.rate;
+    v = clamp(v, 1, 10);
+    erState.rate = v;
+    rateInputErEl.value = v;
+    rateErEl.value = v;
+    updateEarly();
+  });
+
+  termErEl.addEventListener("input", function () {
+    erState.term = parseInt(termErEl.value, 10);
+    termInputErEl.value = erState.term;
+    updateEarly();
+  });
+
+  termInputErEl.addEventListener("input", function () {
+    var v = parseInt(termInputErEl.value, 10);
+    if (!isNaN(v) && v >= 1 && v <= 40) {
+      erState.term = v;
+      termErEl.value = v;
+      updateEarly();
+    }
+  });
+
+  termInputErEl.addEventListener("change", function () {
+    var v = parseInt(termInputErEl.value, 10);
+    if (isNaN(v)) v = erState.term;
+    v = clamp(v, 1, 40);
+    erState.term = v;
+    termInputErEl.value = v;
+    termErEl.value = v;
+    updateEarly();
+  });
+
+  segErBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      segErBtns.forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      erState.freq = btn.dataset.freq;
+      updateEarly();
+    });
+  });
+
+  /* ====================================
+     PART 4C — HERO TOOLTIPS
+     Hovering a headline figure shows a
+     cursor-following sentence putting
+     the number in context. Content is
+     built fresh on every mouse move, so
+     it always reflects current inputs.
+  ==================================== */
+  var FREQ_WORD = { weekly: "week", fortnightly: "fortnight", monthly: "month" };
+
+  function attachHeroTip(hoverEls, heroEl, tipEl, getHTML) {
+    function move(e) {
+      tipEl.innerHTML = getHTML();
+      tipEl.style.display = "block";
+
+      var rect = heroEl.getBoundingClientRect();
+      var tipW = tipEl.offsetWidth;
+
+      /* beside the cursor, flipping left
+         near the hero's right edge */
+      var left = e.clientX - rect.left + 14;
+      if (left + tipW > rect.width - 4) {
+        left = e.clientX - rect.left - tipW - 14;
+      }
+      if (left < 4) left = 4;
+
+      tipEl.style.left = left + "px";
+      tipEl.style.top = (e.clientY - rect.top + 18) + "px";
+    }
+
+    function leave() {
+      tipEl.style.display = "none";
+    }
+
+    hoverEls.forEach(function (el) {
+      el.addEventListener("mousemove", move);
+      el.addEventListener("mouseleave", leave);
+    });
+  }
+
+  /* Repayment: amount in context of the loan */
+  attachHeroTip(
+    [repayAmt],
+    document.getElementById("repayHero"),
+    document.getElementById("repayHeroTip"),
+    function () {
+      return "For a " + fmt(state.amount) + " loan at " + state.rate + "%, your estimated repayments are <b>" +
+        fmt(state._pay) + "</b> per " + FREQ_WORD[state.freq] + ".";
+    }
+  );
+
+  /* Capacity: capacity in context of the
+     comfortable repayment, plus footnote */
+  attachHeroTip(
+    [capAmountEl],
+    document.getElementById("capHero"),
+    document.getElementById("capHeroTip"),
+    function () {
+      return "Based on comfortable repayments of " + fmt(capState.afford) + " per " +
+        FREQ_WORD[capState.freq] + " at " + capState.rate + "%, you're estimated to borrow <b>" + fmt(capState._capacity) + "</b>." +
+        '<div class="tip-note">Estimate only &mdash; a full assessment of your financial position is required.</div>';
+    }
+  );
+
+  /* Early repayment: the combined payoff
+     of the extra contributions. Same tip
+     on both headline figures. */
+  attachHeroTip(
+    [erIntSavedEl, erTimeSavedEl],
+    document.getElementById("erHero"),
+    document.getElementById("erHeroTip"),
+    function () {
+      return "Contributing an additional " + fmt(erState.extra) + " per " +
+        FREQ_WORD[erState.freq] + " to your repayments, you'll save an estimated <b>" +
+        fmt(erState._interestSaved) + "</b> in interest and <b>" +
+        fmtDuration(erState._savedMonths) + "</b> over the life of the loan." +
+        '<div class="tip-note">Estimate only &mdash; based on a ' + fmt(erState.amount) + " loan at " +
+        erState.rate + "%, assumed constant for the full term.</div>";
+    }
+  );
+
+  /* ====================================
+     PART 5 — TOOL TABS
+     Switches between the tool panels
+     inside the calculator view, morphing
+     the card to the new content height.
+  ==================================== */
+  var toolTabs = document.querySelectorAll(".tool-tab");
+  var toolPanels = {
+    repayment: document.getElementById("toolRepayment"),
+    capacity: document.getElementById("toolCapacity"),
+    early: document.getElementById("toolEarly"),
+    terms: document.getElementById("toolTerms")
+  };
+  var activeTool = "repayment";
+
+  function updateActiveTool() {
+    if (activeTool === "repayment") updateRepayment();
+    else if (activeTool === "capacity") updateCapacity();
+    else if (activeTool === "early") updateEarly();
+    /* "terms" is a static page — nothing to recalculate */
+  }
+
+  toolTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      var target = tab.dataset.tool;
+      if (target === activeTool) return;
+
+      toolTabs.forEach(function (t) {
+        t.classList.toggle("active", t === tab);
+        t.setAttribute("aria-selected", t === tab ? "true" : "false");
+      });
+
+      var showEl = toolPanels[target];
+      var hideEl = toolPanels[activeTool];
+      activeTool = target;
+
+      morphCard(function () {
+        hideEl.hidden = true;
+        showEl.hidden = false;
+        updateActiveTool();
+      }, showEl);
+    });
+  });
+
+  window.addEventListener("resize", function () {
+    if (!viewCalc.hidden) updateActiveTool();
+  });
+
+  /* ====================================
+     PART 6 — CONTACT FORM
+     Posts to Web3Forms (web3forms.com —
+     free tier, no backend needed).
+     SETUP: create a free account with
+     the hello@ address, copy the access
+     key it gives you, and paste it into
+     the constant below. Until then the
+     form shows a friendly "not set up
+     yet" message instead of sending.
+  ==================================== */
+  var WEB3FORMS_ACCESS_KEY = "PASTE-YOUR-ACCESS-KEY-HERE";
+
+  var ctForm    = document.getElementById("contactForm");
+  var ctName    = document.getElementById("ctName");
+  var ctEmail   = document.getElementById("ctEmail");
+  var ctMessage = document.getElementById("ctMessage");
+  var ctBot     = document.getElementById("ctBotcheck");
+  var ctSubmit  = document.getElementById("ctSubmit");
+  var ctStatus  = document.getElementById("ctStatus");
+  var ctSuccess = document.getElementById("ctSuccess");
+
+  function setStatus(msg, isError) {
+    ctStatus.textContent = msg;
+    ctStatus.classList.toggle("error", !!isError);
+  }
+
+  ctForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    /* Honeypot: humans never see this
+       box; if it's ticked, pretend to
+       succeed and send nothing. */
+    if (ctBot.checked) {
+      showContactSuccess();
+      return;
+    }
+
+    /* Validation — use the browser's own
+       checks (required, email format)
+       but surface the message in our
+       styled status line. */
+    if (!ctForm.checkValidity()) {
+      if (!ctName.value.trim()) {
+        setStatus("Please enter your name.", true);
+        ctName.focus();
+      } else if (!ctEmail.checkValidity()) {
+        setStatus("Please enter a valid email address.", true);
+        ctEmail.focus();
+      } else {
+        setStatus("Please enter a message.", true);
+        ctMessage.focus();
+      }
+      return;
+    }
+
+    if (WEB3FORMS_ACCESS_KEY.indexOf("PASTE-") === 0) {
+      setStatus("This form isn't connected yet — please email us directly at hello@staplefinance.com.au.", true);
+      return;
+    }
+
+    ctSubmit.disabled = true;
+    ctSubmit.textContent = "Sending\u2026";
+    setStatus("");
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: "New enquiry from staplefinance.com.au",
+        name: ctName.value.trim(),
+        email: ctEmail.value.trim(),
+        message: ctMessage.value.trim()
+      })
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
+          showContactSuccess();
+        } else {
+          throw new Error(data.message || "Submission failed");
+        }
+      })
+      .catch(function () {
+        ctSubmit.disabled = false;
+        ctSubmit.textContent = "Send message";
+        setStatus("Something went wrong sending your message. Please try again, or email us directly.", true);
+      });
+  });
+
+  function showContactSuccess() {
+    morphCard(function () {
+      ctForm.hidden = true;
+      ctSuccess.hidden = false;
+    }, ctSuccess);
+  }
+
+  /* ====================================
+     PART 6B — KEY TERMS CATEGORY NAV
+     Master-detail: categories down the
+     left, one panel of terms on the
+     right. Switching morphs the card to
+     the new panel's height, matching the
+     tool-tab behaviour.
+  ==================================== */
+  var termsNavBtns = document.querySelectorAll(".terms-nav-btn");
+  var termsPanels  = document.querySelectorAll(".terms-panel");
+
+  termsNavBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (btn.classList.contains("active")) return;
+
+      var target = document.getElementById(btn.dataset.terms);
+
+      termsNavBtns.forEach(function (b) {
+        b.classList.toggle("active", b === btn);
+        b.setAttribute("aria-expanded", b === btn ? "true" : "false");
+      });
+
+      morphCard(function () {
+        termsPanels.forEach(function (p) {
+          p.hidden = (p !== target);
+        });
+      }, target);
+    });
+  });
+
+  /* ------------------------------------
+     Boot: show whichever view the URL
+     asks for (no animation on first load)
+  ------------------------------------ */
+  applyView(currentTarget(), false);
+  updateRepayment();
+  updateCapacity();
+  updateEarly();
+})();
+</script>
+
+</body>
+</html>

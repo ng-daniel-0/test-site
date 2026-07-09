@@ -1,0 +1,1302 @@
+/* ---------------------------------
+   Brand tokens
+   Single source of truth for the
+   brand colours, pulled straight
+   from the logo SVG.
+--------------------------------- */
+:root {
+  --ink:        #323439;  /* charcoal from the mark        */
+  --gold:       #cbac48;  /* triangle gold from the mark   */
+  --paper:      #FAF0D5;  /* page background               */
+  --text:       #4a4c50;  /* body copy                     */
+  --text-muted: #8a877f;  /* secondary text / FINANCE      */
+  --text-faint: #b4b1a8;  /* fine print                    */
+  --hairline:   #efece3;  /* dividers / gridlines          */
+
+  --font-brand: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-body:  'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ---------------------------------
+   Base reset
+--------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+/* NOTE: body deliberately has no fixed
+   height — pinning it to 100% caps its
+   box at one viewport height, so any
+   content taller than the screen
+   overflows the body's background. It
+   grows naturally, with min-height
+   below guaranteeing full coverage on
+   short pages. */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  /* NOTE: the card centres itself with
+     margin auto (see .content-box) rather
+     than align/justify on the body. Flex
+     centering pushes tall content above
+     the scroll origin, making the top of
+     the card unreachable on short
+     viewports — auto margins centre when
+     there's room and collapse to zero
+     when there isn't, so the top always
+     stays scrollable. */
+  font-family: var(--font-body);
+  padding: 40px 20px;
+
+  /* Repeating SVG texture over a solid
+     warm paper tone. The tone is a
+     background-COLOR (not a gradient
+     layer) because colours always fill
+     the entire canvas, however tall the
+     page grows — a no-repeat image layer
+     only paints within the body's box.
+     If background.svg is missing the
+     paper colour still shows, so the
+     page never breaks. */
+  background-color: var(--paper);
+  background-image: url("assets/background.svg");
+  background-repeat: repeat;
+  background-size: 500px 500px;
+}
+
+/* ---------------------------------
+   Content box — split card
+   Two-column flex container: content
+   pane left, image pane right.
+--------------------------------- */
+.content-box {
+  background: #ffffff;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto; /* centres in the flex body;
+                   collapses gracefully when
+                   the card is taller than
+                   the viewport */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(50, 52, 57, 0.14);
+  animation: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Card width when the CALCULATOR view
+   is showing. The router adds/removes
+   the calc-active class, and the morph
+   animates the width change smoothly.
+   Adjust this number freely — the home
+   view keeps using the max-width in
+   .content-box above. */
+.content-box.calc-active {
+  max-width: 950px;
+}
+
+/* Card width for the CONTACT view — a
+   form reads best in a narrower
+   measure, and the morph animates the
+   width change on the way in. */
+.content-box.contact-active {
+  max-width: 620px;
+}
+
+/* While morphing between views, the
+   router pins the card to pixel sizes
+   and this transition animates between
+   them (the FLIP technique). */
+.content-box.morphing {
+  transition:
+    width  0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Views inside the card */
+.view[hidden] {
+  display: none !important;
+}
+
+.view-home {
+  display: flex;
+  align-items: stretch;
+}
+
+/* incoming view fades in as the card resizes */
+.view-enter {
+  animation: view-fade 0.3s ease 0.12s both;
+}
+
+@keyframes view-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content-box.morphing { transition: none; }
+  .view-enter { animation: none; }
+}
+
+/* Left pane — the original content */
+.card-content {
+  flex: 1 1 50%;
+  padding: 56px 48px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ---------------------------------
+   Right pane — the image.
+   object-fit: cover fills the pane and
+   crops overflow, so any image shape
+   works without distortion.
+
+   IMAGE TREATMENTS — uncomment ONE
+   "filter" line at a time on the img
+   below to trial it:
+
+   A. Slightly desaturated — calms a
+      busy or overly colourful photo so
+      it doesn't compete with the text.
+   B. Warmed — nudges the photo toward
+      the brand's gold/paper warmth.
+   C. Soft-light — lifts shadows for an
+      airier, more editorial feel.
+--------------------------------- */
+.card-image {
+  flex: 1 1 35%;
+  min-height: 480px;
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.9) sepia(0.15);/* default treatment */
+
+  
+
+  /* A */ /* filter: saturate(0.8); */
+  /* B */ /* filter: saturate(0.9) sepia(0.15); */
+  /* C */ /* filter: brightness(1.05) contrast(0.95); */
+}
+
+/* D. Charcoal wash — a translucent
+   brand-ink overlay across the photo.
+   Unifies any image with the palette.
+   To trial it, change opacity to a
+   value like 0.18 (0 = off). */
+.card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------------------------------
+   Logo lockup — Option 03 (inline)
+   mark · STAPLE · gold divider · FINANCE
+   all on one baseline-centred row.
+--------------------------------- */
+.logo-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  /* was 28px — bumped up to keep a
+     comfortable gap now that the
+     pennant rule (and its 32px margin)
+     is gone */
+  margin-bottom: 36px;
+}
+
+.logo-mark {
+  width: 33px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.logo-staple {
+  font-family: var(--font-brand);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--ink);
+}
+
+/* Thin gold divider between the two words */
+.logo-divider {
+  width: 1px;
+  height: 26px;
+  background: var(--gold);
+}
+
+.logo-finance {
+  font-family: var(--font-brand);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 4.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  /* optical nudge so the small caps sit
+     on the same visual centre as STAPLE */
+  transform: translateY(1px);
+}
+
+/* ---------------------------------
+   Type
+--------------------------------- */
+.card-content h1 {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.lede {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  max-width: 40ch;
+  margin: 0 auto 32px;
+}
+
+/* ---------------------------------
+   Calls to action
+   Solid button = primary, ghost
+   (outlined) = secondary.
+--------------------------------- */
+.btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--ink);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 13px 34px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Secondary — outlined, quieter */
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid #d8d5cc;
+  padding: 12px 26px; /* 1px less to offset the border */
+}
+
+/* Same gold hover language as the solid
+   button; only the fill treatment
+   differs — a light gold wash instead
+   of solid. */
+.btn-ghost:hover {
+  background: rgba(203, 172, 72, 0.14);
+  border-color: var(--gold);
+  color: var(--ink);
+}
+
+.alt-contact {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.alt-contact a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 3px;
+}
+
+.alt-contact a:hover {
+  color: var(--ink);
+}
+
+/* ---------------------------------
+   Fine print
+--------------------------------- */
+.fineprint {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  color: var(--text-faint);
+}
+
+/* ---------------------------------
+   Entrance
+   A soft rise-and-settle on load.
+   Disabled automatically for people
+   who prefer reduced motion.
+--------------------------------- */
+@keyframes rise-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content-box {
+    animation: none;
+  }
+}
+
+/* =================================
+   CALCULATOR PAGE
+   Reuses .content-box so it floats in
+   the exact same card space as the
+   home page — but single pane.
+================================= */
+.view-calc {
+  padding: 40px 48px 32px;
+}
+
+/* Header: small lockup + back link */
+.calc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* ---------------------------------
+   Tool switcher — toggles between
+   the Repayment and Borrowing
+   Capacity calculators. Deliberately
+   plain underline tabs rather than a
+   nav bar, so it reads as part of
+   the card, not a site-wide nav.
+--------------------------------- */
+.tool-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: 28px;
+}
+
+.tool-tab {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-right: 24px;
+  margin-bottom: -1px;
+  padding: 0 2px 12px;
+  font-family: var(--font-brand);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tool-tab:hover {
+  color: var(--ink);
+}
+
+.tool-tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--gold);
+}
+
+.tool-tab:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.tool-panel[hidden] {
+  display: none !important;
+}
+
+.calc-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* scale the lockup down in the header */
+.calc-brand .logo-mark    { width: 27px; }
+.calc-brand .logo-staple  { font-size: 24px; letter-spacing: 2px; }
+.calc-brand .logo-divider { height: 20px; }
+.calc-brand .logo-finance { font-size: 14px; letter-spacing: 3px; }
+
+.back-link {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--ink);
+}
+
+.calc-title {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+
+/* Two columns: controls | results,
+   with a light vertical divider sitting
+   in the middle of the gap between them */
+.calc-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 44px;
+  align-items: start;
+  position: relative;
+}
+
+.calc-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 322px; /* midpoint of the 44px column gap */
+  width: 1px;
+  background: var(--hairline);
+}
+
+/* ----------- Controls ----------- */
+.field {
+  margin-bottom: 26px;
+}
+
+.field-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-brand);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.field-value {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+/* Small typeable box paired with each
+   slider — type a value or drag, both
+   stay in sync. */
+.inline-num {
+  width: 56px;
+  border: none;
+  border-bottom: 1px solid #d8d5cc;
+  background: transparent;
+  outline: none;
+  text-align: right;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 0 2px 2px;
+  transition: border-color 0.2s ease;
+}
+
+.inline-num:focus {
+  border-color: var(--gold);
+}
+
+/* hide the number input spinner arrows */
+.inline-num::-webkit-outer-spin-button,
+.inline-num::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inline-num[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.field-value .unit {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* $ amount input */
+.money-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d8d5cc;
+  border-radius: 5px;
+  padding: 0 14px;
+  transition: border-color 0.2s ease;
+}
+
+.money-input:focus-within {
+  border-color: var(--gold);
+}
+
+.money-prefix {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+.money-input input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 12px 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+}
+
+/* Frequency segmented control */
+.segmented {
+  display: flex;
+  border: 1px solid #d8d5cc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.segmented button {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.segmented button + button {
+  border-left: 1px solid #d8d5cc;
+}
+
+.segmented button.active {
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.segmented button:not(.active):hover {
+  color: var(--ink);
+}
+
+/* Sliders — styled explicitly so the
+   unfilled track is a light, quiet grey
+   rather than the browser's (often much
+   darker) default track colour. */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #e7e4da;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #e7e4da;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px; /* centres the thumb on the 4px track */
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 1px 3px rgba(50, 52, 57, 0.25);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 1px 3px rgba(50, 52, 57, 0.25);
+}
+
+input[type="range"]:focus-visible {
+  outline: none;
+}
+
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+input[type="range"]:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.range-ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-faint);
+  margin-top: 4px;
+}
+
+/* ----------- Results ----------- */
+.repayment-hero {
+  background: #faf9f5;
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--gold);
+  border-radius: 5px;
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+
+/* Dual hero — two headline figures in
+   one card, split by a hairline. Used
+   by the early-repayment tool for
+   Interest saved | Time saved. */
+.hero-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+}
+
+.hero-pair .hero-cell + .hero-cell {
+  border-left: 1px solid var(--hairline);
+  padding-left: 24px;
+}
+
+.hero-pair .repayment-amount {
+  font-size: 25px;
+}
+
+.repayment-label {
+  font-family: var(--font-brand);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.repayment-amount {
+  font-family: var(--font-body);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+/* The monthly-equivalence line slides
+   open and closed. Animating
+   grid-template-rows from 0fr to 1fr is
+   the clean way to transition to/from
+   an auto height — the card grows and
+   shrinks smoothly with it. */
+/* Amount + optional inline note (e.g.
+   "≈ $2,839 per month") share one
+   baseline row, so showing/hiding the
+   note never changes the card height. */
+.repayment-hero {
+  position: relative; /* anchors .hero-tip */
+}
+
+.repayment-hero-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.repayment-monthly-inline {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Hero tooltip — a cursor-following
+   sentence putting the headline figure
+   in context. Same visual language as
+   the chart tooltips. */
+.hero-tip {
+  display: none;
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+  max-width: 250px;
+  background: #ffffff;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  box-shadow: 0 10px 28px rgba(50, 52, 57, 0.18);
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.hero-tip b {
+  font-weight: 600;
+}
+
+.hero-tip .tip-note {
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid var(--hairline);
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* the headline figures hint that
+   there's more on hover */
+#repaymentAmount,
+#capacityAmount,
+#erInterestSaved,
+#erTimeSaved {
+  cursor: help;
+}
+
+.stat-row {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 22px;
+  padding: 0 4px;
+}
+
+.stat-label {
+  display: block;
+  font-family: var(--font-brand);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 3px;
+}
+
+.stat-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Chart */
+.chart-wrap {
+  width: 100%;
+  position: relative; /* anchors the tooltip */
+}
+
+/* Hover tooltip — follows the cursor,
+   snapping its data to the nearest year */
+.chart-tip {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  pointer-events: none; /* never blocks the mouse */
+  min-width: 168px;
+  background: #ffffff;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  box-shadow: 0 10px 28px rgba(50, 52, 57, 0.18);
+  padding: 10px 12px;
+  font-size: 11px;
+  color: var(--text);
+}
+
+.tip-year {
+  font-family: var(--font-brand);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.tip-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+
+.tip-row b {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--ink);
+  padding-left: 14px;
+}
+
+.tip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tip-dot-hollow {
+  background: rgba(50, 52, 57, 0.12);
+  border: 1px solid #d8d5cc;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 10px;
+}
+
+.key {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.swatch {
+  width: 14px;
+  height: 2px;
+  display: inline-block;
+}
+
+.swatch-ink  { background: var(--ink); }
+.swatch-gold { background: var(--gold); }
+.swatch-area { height: 8px; background: rgba(50, 52, 57, 0.12); } /* interest band */
+
+.swatch-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.calc-chart {
+  width: 100%;
+  display: block;
+}
+
+/* ---------------------------------
+   Key Terms — master-detail layout.
+   Categories down the left, one panel
+   of terms on the right, split by the
+   same hairline divider the
+   calculators use.
+--------------------------------- */
+.terms-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 44px;
+  align-items: start;
+  position: relative;
+}
+
+.terms-layout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 252px; /* midpoint of the 44px column gap */
+  width: 1px;
+  background: var(--hairline);
+}
+
+/* Category nav */
+.terms-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.terms-nav-btn {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-left: 2px solid transparent;
+  text-align: left;
+  padding: 11px 14px;
+  cursor: pointer;
+  font-family: var(--font-brand);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.terms-nav-btn:hover {
+  color: var(--ink);
+}
+
+.terms-nav-btn.active {
+  color: var(--ink);
+  border-left-color: var(--gold);
+}
+
+.terms-nav-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.terms-panel[hidden] {
+  display: none !important;
+}
+
+.term-list {
+  margin: 0;
+}
+
+.term-list dt {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 14px;
+}
+
+.term-list dt:first-child {
+  margin-top: 2px;
+}
+
+.term-expansion {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.term-list dd {
+  margin: 3px 0 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Narrow screens: nav moves above the
+   content as a wrapping row of pills;
+   the vertical divider goes away. */
+@media (max-width: 720px) {
+  .terms-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .terms-layout::before {
+    display: none;
+  }
+
+  .terms-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 14px;
+  }
+
+  .terms-nav-btn {
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    padding: 6px 8px;
+    font-size: 10.5px;
+    letter-spacing: 1.1px;
+  }
+
+  .terms-nav-btn.active {
+    border-bottom-color: var(--gold);
+  }
+}
+
+/* ---------------------------------
+   Contact view
+--------------------------------- */
+.view-contact {
+  padding: 40px 48px 36px;
+}
+
+.contact-inner {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.contact-lede {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: -14px 0 28px; /* tucks under .calc-title's margin */
+}
+
+/* Text inputs — same visual language as
+   the calculators' money inputs. */
+.text-input {
+  width: 100%;
+  border: 1px solid #d8d5cc;
+  border-radius: 5px;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink);
+  background: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.text-area {
+  resize: none; /* fixed size — no drag handle */
+  height: 140px;
+  line-height: 1.55;
+}
+
+/* Honeypot — visually removed but still
+   in the form for bots to find. Not
+   display:none, which some bots skip. */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact-actions {
+  margin-top: 4px;
+}
+
+.contact-actions .btn {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  width: 100%;
+}
+
+.contact-actions .btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.contact-status {
+  min-height: 1.2em;
+  margin-top: 12px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.contact-status.error {
+  color: #a04b3c;
+}
+
+/* Success state — replaces the form */
+.contact-success {
+  text-align: center;
+  padding: 26px 0 10px;
+}
+
+.contact-success-mark {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 44px;
+}
+
+.contact-success h2 {
+  font-family: var(--font-body);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.contact-success p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.view-contact .alt-contact {
+  text-align: center;
+  margin-top: 26px;
+}
+
+@media (max-width: 720px) {
+  .view-contact {
+    padding: 28px 22px 26px;
+  }
+}
+
+.calc-fineprint {
+  margin-top: 32px;
+  line-height: 1.6;
+}
+
+/* ---------------------------------
+   Tablet and below
+   Home card stacks; calculator grid
+   collapses to one column.
+--------------------------------- */
+@media (max-width: 860px) {
+  .content-box {
+    max-width: 560px;
+  }
+
+  .view-home {
+    flex-direction: column;
+  }
+
+  .card-content {
+    padding: 48px 36px 36px;
+  }
+
+  .card-image {
+    min-height: 0;
+    height: 240px;
+  }
+
+  /* calculator stacks controls above results */
+  .view-calc {
+    padding: 32px 32px 28px;
+  }
+
+  .calc-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .calc-grid::before {
+    display: none;
+  }
+}
+
+/* ---------------------------------
+   Small screens
+--------------------------------- */
+@media (max-width: 480px) {
+  .card-content {
+    padding: 44px 28px 32px;
+  }
+
+  .logo-block {
+    gap: 12px;
+  }
+
+  .logo-mark   { width: 30px; }
+  .logo-staple { font-size: 21px; letter-spacing: 2.5px; }
+  .logo-divider { height: 21px; }
+  .logo-finance { font-size: 11px; letter-spacing: 3.5px; }
+
+  .card-image {
+    height: 200px;
+  }
+
+  .view-calc {
+    padding: 28px 22px 24px;
+  }
+
+  .repayment-amount {
+    font-size: 28px;
+  }
+
+  .hero-pair {
+    grid-template-columns: 1fr;
+    gap: 14px 0;
+  }
+
+  .hero-pair .hero-cell + .hero-cell {
+    border-left: none;
+    border-top: 1px solid var(--hairline);
+    padding-left: 0;
+    padding-top: 14px;
+  }
+
+  .hero-pair .repayment-amount {
+    font-size: 24px;
+  }
+
+  .tool-tab {
+    margin-right: 16px;
+    font-size: 11.5px;
+    letter-spacing: 1px;
+  }
+}
